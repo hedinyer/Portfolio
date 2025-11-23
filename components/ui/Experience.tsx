@@ -45,15 +45,15 @@ export default function Experience() {
     const y = useTransform(scrollYProgress, [0, 1], [100, -100])
 
     return (
-        <section ref={containerRef} className="relative z-10 min-h-screen flex flex-col justify-center py-20 px-8 md:px-20 bg-[#f5f5f0] text-blue-600">
+        <section ref={containerRef} className="relative z-10 min-h-screen flex flex-col justify-center py-12 sm:py-20 px-4 sm:px-8 md:px-20 bg-transparent text-blue-600">
             <motion.h2
                 style={{ y }}
-                className="text-5xl md:text-7xl font-bold mb-20 tracking-tighter"
+                className="text-4xl sm:text-5xl md:text-7xl font-bold mb-12 sm:mb-20 tracking-tighter"
             >
                 Where I've worked
             </motion.h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-20 gap-y-8 sm:gap-y-12">
                 {experiences.map((exp, i) => (
                     <motion.div
                         key={i}
@@ -62,10 +62,10 @@ export default function Experience() {
                         transition={{ delay: i * 0.1 }}
                         className="flex flex-col gap-2"
                     >
-                        <h3 className="text-xl md:text-2xl font-medium text-black">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-black leading-tight">
                             {exp.company} - {exp.role}
                         </h3>
-                        <p className="text-lg text-neutral-500">
+                        <p className="text-base sm:text-lg text-neutral-500">
                             {exp.period}
                         </p>
                     </motion.div>
