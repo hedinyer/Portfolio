@@ -164,7 +164,7 @@ const services = [
 
 export default function Services() {
     const containerRef = useRef<HTMLDivElement>(null)
-    const [expandedId, setExpandedId] = useState<string | null>(null)
+    const [expandedIds, setExpandedIds] = useState<string[]>([])
     const canvasRefs = useRef<Map<string, HTMLDivElement>>(new Map())
 
     useEffect(() => {
@@ -185,75 +185,91 @@ export default function Services() {
         return () => ctx.revert()
     }, [])
 
-    // Three.js effect when expanded
+    // Three.js effect when expanded - handle all expanded services
     useEffect(() => {
-        if (!expandedId) return
-        const canvasRef = canvasRefs.current.get(expandedId)
-        if (!canvasRef) return
+        const cleanupFunctions: (() => void)[] = []
 
-        const scene = new THREE.Scene()
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-        camera.position.z = 5
+        expandedIds.forEach((expandedId) => {
+            const canvasRef = canvasRefs.current.get(expandedId)
+            if (!canvasRef) return
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
-        const width = canvasRef.offsetWidth || 800
-        const height = canvasRef.offsetHeight || 400
-        renderer.setSize(width, height)
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        canvasRef.appendChild(renderer.domElement)
+            // Check if canvas already has a renderer
+            if (canvasRef.querySelector('canvas')) return
 
-        const particlesGeometry = new THREE.BufferGeometry()
-        const particlesCount = 500
-        const posArray = new Float32Array(particlesCount * 3)
+            const scene = new THREE.Scene()
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
+            camera.position.z = 5
 
-        for (let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 10
-        }
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
+            const width = canvasRef.offsetWidth || 800
+            const height = canvasRef.offsetHeight || 400
+            renderer.setSize(width, height)
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+            canvasRef.appendChild(renderer.domElement)
 
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3))
+            const particlesGeometry = new THREE.BufferGeometry()
+            const particlesCount = 500
+            const posArray = new Float32Array(particlesCount * 3)
 
-        const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.015,
-            color: 0x2563eb,
-            transparent: true,
-            opacity: 0.2,
-            blending: THREE.AdditiveBlending
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 10
+            }
+
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3))
+
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.015,
+                color: 0x2563eb,
+                transparent: true,
+                opacity: 0.2,
+                blending: THREE.AdditiveBlending
+            })
+
+            const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+            scene.add(particles)
+
+            const animate = () => {
+                requestAnimationFrame(animate)
+                particles.rotation.y += 0.0005
+                particles.rotation.x += 0.0003
+                renderer.render(scene, camera)
+            }
+            animate()
+
+            const handleResize = () => {
+                if (!canvasRef) return
+                const newWidth = canvasRef.offsetWidth || 800
+                const newHeight = canvasRef.offsetHeight || 400
+                camera.aspect = newWidth / newHeight
+                camera.updateProjectionMatrix()
+                renderer.setSize(newWidth, newHeight)
+            }
+            window.addEventListener('resize', handleResize)
+
+            cleanupFunctions.push(() => {
+                window.removeEventListener('resize', handleResize)
+                if (canvasRef && renderer.domElement.parentElement) {
+                    canvasRef.removeChild(renderer.domElement)
+                }
+                particlesGeometry.dispose()
+                particlesMaterial.dispose()
+                renderer.dispose()
+            })
         })
 
-        const particles = new THREE.Points(particlesGeometry, particlesMaterial)
-        scene.add(particles)
-
-        const animate = () => {
-            requestAnimationFrame(animate)
-            particles.rotation.y += 0.0005
-            particles.rotation.x += 0.0003
-            renderer.render(scene, camera)
-        }
-        animate()
-
-        const handleResize = () => {
-            if (!canvasRef) return
-            const newWidth = canvasRef.offsetWidth || 800
-            const newHeight = canvasRef.offsetHeight || 400
-            camera.aspect = newWidth / newHeight
-            camera.updateProjectionMatrix()
-            renderer.setSize(newWidth, newHeight)
-        }
-        window.addEventListener('resize', handleResize)
-
         return () => {
-            window.removeEventListener('resize', handleResize)
-            if (canvasRef && renderer.domElement.parentElement) {
-                canvasRef.removeChild(renderer.domElement)
-            }
-            particlesGeometry.dispose()
-            particlesMaterial.dispose()
-            renderer.dispose()
+            cleanupFunctions.forEach(cleanup => cleanup())
         }
-    }, [expandedId])
+    }, [expandedIds])
 
     const toggleService = (id: string) => {
-        setExpandedId(expandedId === id ? null : id)
+        setExpandedIds(prev => {
+            if (prev.includes(id)) {
+                return prev.filter(expandedId => expandedId !== id)
+            } else {
+                return [...prev, id]
+            }
+        })
     }
 
     return (
@@ -261,7 +277,7 @@ export default function Services() {
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-12 sm:mb-20 tracking-tighter">What you'll find here</h2>
             <div className="flex flex-col gap-2 sm:gap-4">
                 {services.map((service, i) => {
-                    const isExpanded = expandedId === service.id
+                    const isExpanded = expandedIds.includes(service.id)
                     return (
                         <div key={i} className="service-item border-b border-blue-600/20 overflow-hidden">
                             <div 
