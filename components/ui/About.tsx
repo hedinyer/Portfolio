@@ -1,6 +1,7 @@
 'use client'
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function About() {
     return (
@@ -14,10 +15,15 @@ export default function About() {
                         className="relative aspect-[3/4] rounded-[1.5rem] sm:rounded-[2rem] border-2 border-blue-600 p-3 sm:p-4 bg-white"
                     >
                         <div className="w-full h-full rounded-[1rem] sm:rounded-[1.5rem] overflow-hidden bg-neutral-100 relative">
-                            <img 
-                                src="/andrea.jpg" 
+                            <Image 
+                                src="/andreaphoto.png" 
                                 alt="Andrea Rodriguez" 
+                                width={600}
+                                height={800}
+                                sizes="(max-width: 1024px) 100vw, 33vw"
                                 className="w-full h-full object-cover"
+                                priority
+                                quality={90}
                             />
                         </div>
                     </motion.div>

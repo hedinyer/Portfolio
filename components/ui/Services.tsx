@@ -3,52 +3,11 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Image from 'next/image'
 import MatrixASCII from './MatrixASCII'
 import * as THREE from 'three'
 
 gsap.registerPlugin(ScrollTrigger)
-
-const serviceMosaics: Record<string, string[]> = {
-    logofolio: [
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/LOGOFOLIO/Frame%2071.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/LOGOFOLIO/Frame%2072.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/LOGOFOLIO/Frame%2073.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/LOGOFOLIO/Frame%2074.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/LOGOFOLIO/Frame%2075.png',
-    ],
-    visual: [
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/1.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/2.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/3.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/4.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/5.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/6.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/7.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/NÚA%20ELEGIDAS/Manual de Marca NÚA_compressed_page-0001.jpg',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/NÚA%20ELEGIDAS/Manual de Marca NÚA_compressed_page-0004.jpg',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/NÚA%20ELEGIDAS/Manual de Marca NÚA_compressed_page-0007.jpg',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/SERES%20ELEGIDAS/MANUAL SERES_compressed_page-0001.jpg',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/SERES%20ELEGIDAS/MANUAL SERES_compressed_page-0004.jpg',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/SERES%20ELEGIDAS/MANUAL SERES_compressed_page-0008.jpg',
-    ],
-    illustration: [
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Babilio/177871161.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Babilio/Frame%2077.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Calendario/177871160.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Calendario/Frame%2076.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Otro/177871162.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Otro/177871163.png',
-    ],
-    social: [
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/REDES%20SOCIALES/177871164.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/REDES%20SOCIALES/177871165.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/REDES%20SOCIALES/177871166.png',
-    ],
-    ux: [
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/UX%20UI/177871167.png',
-        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/UX%20UI/177871168.png',
-    ],
-}
 
 const services = [
     { 
@@ -58,11 +17,11 @@ const services = [
             title: "Logofolio",
             description: "Through my experience as a designer, I have created logos for academic projects, solo ventures, and businesses.",
             items: [
-                { name: 'fidu', description: 'Academic project logo' },
-                { name: 'Lumar Prestige', description: 'Luxury brand identity' },
-                { name: 'SNOW', description: 'Winter collection brand' },
-                { name: 'VIERCO', description: 'Corporate identity' },
-                { name: 'HUEVOS JVC', description: 'Agricultural brand' },
+                { name: 'fidu', description: 'Academic project logo', image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 71.png' },
+                { name: 'Lumar Prestige', description: 'Luxury brand identity', image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 72.png' },
+                { name: 'SNOW', description: 'Winter collection brand', image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 73.png' },
+                { name: 'VIERCO', description: 'Corporate identity', image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 74.png' },
+                { name: 'HUEVOS JVC', description: 'Agricultural brand', image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 75.png' },
                 { name: 'sanfy', description: 'Modern tech brand' }
             ]
         }
@@ -76,15 +35,56 @@ const services = [
             items: [
                 { 
                     name: 'NÚA', 
-                    description: "Seeking to connect more with its target audience, the brand aimed for a feminine, delicate, fresh image with a calm energy, creating an identity that flows through all brand elements, from stationery to clothing."
+                    description: "Seeking to connect more with its target audience, the brand aimed for a feminine, delicate, fresh image with a calm energy, creating an identity that flows through all brand elements, from stationery to clothing.",
+                    images: [
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0001.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0004.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0007.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0008.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0010.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0011.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0016.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0017.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0018.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0023.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0024.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0026.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0027.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0029.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0033.jpg'
+                    ]
                 },
                 { 
                     name: 'SERES', 
-                    description: "SERES is a wellness space located in the mountains that wanted to create a visual identity inviting its audience to experience transformation, reflection, and tranquility through colors, experiences, and concepts. A project created in collaboration with the support of Julián Uscategui."
+                    description: "SERES is a wellness space located in the mountains that wanted to create a visual identity inviting its audience to experience transformation, reflection, and tranquility through colors, experiences, and concepts. A project created in collaboration with the support of Julián Uscategui.",
+                    images: [
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0001.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0004.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0008.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0010.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0012.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0018.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0019.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0024.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0026.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0033.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0035.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0036.jpg',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0038.jpg'
+                    ]
                 },
                 { 
                     name: 'Geopark Canyon Chicamocha', 
-                    description: "To meet UNESCO's requirements for registration as a geopark, this project was developed to capture the natural and community values of the Chicamocha Canyon in Santander, Colombia. It was a multidisciplinary effort with constant interaction with the local culture to establish a true connection with its people. Academic project in collaboration with Astrid Aillón and Ana Niño."
+                    description: "To meet UNESCO's requirements for registration as a geopark, this project was developed to capture the natural and community values of the Chicamocha Canyon in Santander, Colombia. It was a multidisciplinary effort with constant interaction with the local culture to establish a true connection with its people. Academic project in collaboration with Astrid Aillón and Ana Niño.",
+                    images: [
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/GEOPARQUE/1.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/GEOPARQUE/2.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/GEOPARQUE/3.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/GEOPARQUE/4.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/GEOPARQUE/5.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/GEOPARQUE/6.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/GEOPARQUE/7.png'
+                    ]
                 }
             ]
         }
@@ -98,11 +98,27 @@ const services = [
             items: [
                 { 
                     name: 'Character design "Babilio"', 
-                    description: "As part of a university app proposal, the team created \"Babilio,\" a character inspired by the caiman living on campus, to build a friendly connection with users and bring life to the app's blank spaces. The project included the creation of this character and six illustrations of it performing different activities for various occasions."
+                    description: "As part of a university app proposal, the team created \"Babilio,\" a character inspired by the caiman living on campus, to build a friendly connection with users and bring life to the app's blank spaces. The project included the creation of this character and six illustrations of it performing different activities for various occasions.",
+                    images: [
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Babilio/177871161.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Babilio/Frame 77.png'
+                    ]
                 },
                 { 
                     name: 'Calendar', 
-                    description: "As a personal project, I created this calendar with illustrations that evoke feelings of tranquility, freshness, and friendship through friendly, memorable characters depicted in picturesque everyday scenes from each season of the year."
+                    description: "As a personal project, I created this calendar with illustrations that evoke feelings of tranquility, freshness, and friendship through friendly, memorable characters depicted in picturesque everyday scenes from each season of the year.",
+                    images: [
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Calendario/177871160.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Calendario/Frame 76.png'
+                    ]
+                },
+                { 
+                    name: 'Personal digital artwork', 
+                    description: "A collection of personal digital illustrations showcasing various styles and subjects, from fantasy landscapes to whimsical character designs and portraits.",
+                    images: [
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Otro/177871162.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Otro/177871163.png'
+                    ]
                 }
             ]
         }
@@ -113,7 +129,17 @@ const services = [
         content: {
             title: "Social Media",
             description: "Engaging social media content and campaigns that connect with your audience.",
-            items: []
+            items: [
+                {
+                    name: 'Social Media Content',
+                    description: "A collection of engaging social media content and campaigns designed to connect with audiences.",
+                    images: [
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/REDES SOCIALES/177871164.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/REDES SOCIALES/177871165.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/REDES SOCIALES/177871166.png'
+                    ]
+                }
+            ]
         }
     },
     { 
@@ -122,7 +148,16 @@ const services = [
         content: {
             title: "UX UI Study",
             description: "User experience and interface design studies focused on usability and aesthetics.",
-            items: []
+            items: [
+                {
+                    name: 'Website',
+                    description: "An end-to-end web design and development project, from the initial planning stage to final implementation. The focus was on creating a user interface that centralizes all information about the 'Geopark Canyon Chicamocha' project, making it engaging for those interested in learning about and exploring the site.",
+                    images: [
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/UX UI/177871168.png',
+                        '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/UX UI/177871167.png'
+                    ]
+                }
+            ]
         }
     },
 ]
@@ -271,84 +306,196 @@ export default function Services() {
 
                                             {/* Content */}
                                             <div className="relative z-10">
-                                                {/* Encabezado de la categoría */}
-                                                <div className="mb-8 sm:mb-10">
-                                                    <h4 className="text-sm uppercase tracking-[0.25em] text-neutral-500 mb-4">
-                                                        {service.name}
-                                                    </h4>
-                                                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-4">
-                                                        {service.content.title}
-                                                    </h3>
-                                                    <p className="text-base sm:text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl">
-                                                        {service.content.description}
-                                                    </p>
-                                                </div>
+                                                <p className="text-base sm:text-lg md:text-xl leading-relaxed text-neutral-800 mb-8 sm:mb-12 max-w-3xl">
+                                                    {service.content.description}
+                                                </p>
 
-                                                {/* Lista de proyectos / piezas */}
                                                 {service.content.items.length > 0 && (
-                                                    <div className="space-y-5 sm:space-y-6 mb-10">
-                                                        {service.content.items.map((item, idx) => (
-                                                            <motion.div
-                                                                key={idx}
-                                                                initial={{ opacity: 0, y: 10 }}
-                                                                animate={{ opacity: 1, y: 0 }}
-                                                                transition={{ delay: idx * 0.06 }}
-                                                                className="border-l border-neutral-200 pl-4 sm:pl-6"
-                                                            >
-                                                                <h5 className="text-lg sm:text-xl font-medium text-neutral-900 mb-1">
-                                                                    {item.name}
-                                                                </h5>
-                                                                <p className="text-sm sm:text-base text-neutral-600 leading-relaxed max-w-2xl">
-                                                                    {item.description}
-                                                                </p>
+                                                    service.id === 'logofolio' ? (
+                                                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                                                            {service.content.items.map((item, idx) => (
+                                                                item.image && (
+                                                                    <motion.div
+                                                                        key={idx}
+                                                                        initial={{ opacity: 0, scale: 0.95 }}
+                                                                        animate={{ opacity: 1, scale: 1 }}
+                                                                        transition={{ delay: idx * 0.05 }}
+                                                                        className="aspect-square flex items-center justify-center bg-white/5 rounded-lg p-3 sm:p-4"
+                                                                    >
+                                                                        <Image 
+                                                                            src={item.image} 
+                                                                            alt={item.name}
+                                                                            width={400}
+                                                                            height={400}
+                                                                            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                                                            className="w-full h-full object-contain"
+                                                                            loading="lazy"
+                                                                            quality={85}
+                                                                        />
+                                                                    </motion.div>
+                                                                )
+                                                            ))}
+                                                        </div>
+                                                    ) : (
+                                                        <div className="space-y-12 sm:space-y-16">
+                                                            {service.content.items.map((item, idx) => (
+                                                                <motion.div
+                                                                    key={idx}
+                                                                    initial={{ opacity: 0, y: 20 }}
+                                                                    animate={{ opacity: 1, y: 0 }}
+                                                                    transition={{ delay: idx * 0.1 }}
+                                                                    className="border-b border-blue-600/20 pb-8 sm:pb-12"
+                                                                >
+                                                                    {item.image && (
+                                                                        <div className="w-full aspect-square flex items-center justify-center bg-white/5 rounded-lg p-4 sm:p-6">
+                                                                            <Image 
+                                                                                src={item.image} 
+                                                                                alt={item.name}
+                                                                                width={800}
+                                                                                height={800}
+                                                                                sizes="(max-width: 768px) 100vw, 50vw"
+                                                                                className="w-full h-full object-contain max-h-full"
+                                                                                loading="lazy"
+                                                                                quality={85}
+                                                                            />
+                                                                        </div>
+                                                                    )}
+                                                                {item.images && item.images.length > 0 && (
+                                                                    <div>
+                                                                        {(item.name === 'Calendar' || item.name === 'Character design "Babilio"') ? (
+                                                                            <>
+                                                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-6 sm:mb-8">
+                                                                                    <div>
+                                                                                        <h5 className="text-xl sm:text-2xl md:text-3xl font-medium text-blue-600 mb-4 sm:mb-6 tracking-tighter">{item.name}</h5>
+                                                                                        <p className="text-sm sm:text-base md:text-lg text-neutral-600 leading-relaxed">{item.description}</p>
+                                                                                    </div>
+                                                                                    {item.images.length > 1 && (
+                                                                                        <motion.div
+                                                                                            initial={{ opacity: 0, scale: 0.95 }}
+                                                                                            animate={{ opacity: 1, scale: 1 }}
+                                                                                            transition={{ delay: idx * 0.1 + 0.05 }}
+                                                                                            className="w-full"
+                                                                                        >
+                                                                                            <Image 
+                                                                                                src={item.images[1]} 
+                                                                                                alt={`${item.name} - 2`}
+                                                                                                width={1200}
+                                                                                                height={800}
+                                                                                                sizes="(max-width: 768px) 100vw, 50vw"
+                                                                                                className="w-full h-auto object-contain rounded-lg"
+                                                                                                loading="lazy"
+                                                                                                quality={85}
+                                                            />
+                                                                                        </motion.div>
+                                                                                    )}
+                                                                                </div>
+                                                                                {item.images.length > 0 && (
+                                                                                    <motion.div
+                                                                                        initial={{ opacity: 0, scale: 0.95 }}
+                                                                                        animate={{ opacity: 1, scale: 1 }}
+                                                                                        transition={{ delay: idx * 0.1 + 0.1 }}
+                                                                                        className="w-full"
+                                                                                    >
+                                                                                        <Image 
+                                                                                            src={item.images[0]} 
+                                                                                            alt={`${item.name} - 1`}
+                                                                                            width={1200}
+                                                                                            height={800}
+                                                                                            sizes="100vw"
+                                                                                            className="w-full h-auto object-contain rounded-lg"
+                                                                                            loading="lazy"
+                                                                                            quality={85}
+                                                                                        />
+                                                                                    </motion.div>
+                                                                                )}
+                                                                            </>
+                                                                        ) : item.name === 'Website' ? (
+                                                                            <>
+                                                                                <div className="space-y-2 sm:space-y-4">
+                                                                                    {item.images.map((img, imgIdx) => (
+                                                                                        <motion.div
+                                                                                            key={imgIdx}
+                                                                                            initial={{ opacity: 0, scale: 0.95 }}
+                                                                                            animate={{ opacity: 1, scale: 1 }}
+                                                                                            transition={{ delay: idx * 0.1 + imgIdx * 0.1 }}
+                                                                                            className="w-full"
+                                                                                        >
+                                                                                            <Image 
+                                                                                                src={img} 
+                                                                                                alt={`${item.name} - ${imgIdx + 1}`}
+                                                                                                width={1920}
+                                                                                                height={1080}
+                                                                                                sizes="100vw"
+                                                                                                className="w-full h-auto object-contain rounded-lg"
+                                                                                                loading="lazy"
+                                                                                                quality={85}
+                                                                                            />
+                                                                                        </motion.div>
+                                                                                    ))}
+                                                                                </div>
+                                                                            </>
+                                                                        ) : (item.name === 'Personal digital artwork' || item.name === 'Social Media Content') ? (
+                                                                            <>
+                                                                                <h5 className="text-xl sm:text-2xl md:text-3xl font-medium text-blue-600 mb-4 sm:mb-6 tracking-tighter">{item.name}</h5>
+                                                                                <p className="text-sm sm:text-base md:text-lg text-neutral-600 leading-relaxed mb-6 sm:mb-8">{item.description}</p>
+                                                                                <div className="space-y-2 sm:space-y-4">
+                                                                                    {item.images.map((img, imgIdx) => (
+                                                                                        <motion.div
+                                                                                            key={imgIdx}
+                                                                                            initial={{ opacity: 0, scale: 0.95 }}
+                                                                                            animate={{ opacity: 1, scale: 1 }}
+                                                                                            transition={{ delay: idx * 0.1 + imgIdx * 0.1 }}
+                                                                                            className="w-full"
+                                                                                        >
+                                                                                            <Image 
+                                                                                                src={img} 
+                                                                                                alt={`${item.name} - ${imgIdx + 1}`}
+                                                                                                width={1920}
+                                                                                                height={1080}
+                                                                                                sizes="100vw"
+                                                                                                className="w-full h-auto object-contain rounded-lg"
+                                                                                                loading="lazy"
+                                                                                                quality={85}
+                                                                                            />
+                                                                                        </motion.div>
+                                                                                    ))}
+                                                                                </div>
+                                                                            </>
+                                                                        ) : (
+                                                                            <>
+                                                                                <h5 className="text-xl sm:text-2xl md:text-3xl font-medium text-blue-600 mb-6 sm:mb-8 tracking-tighter">{item.name}</h5>
+                                                                                <p className="text-sm sm:text-base md:text-lg text-neutral-600 leading-relaxed mb-6 sm:mb-8">{item.description}</p>
+                                                                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                                                                                    {item.images.map((img, imgIdx) => (
+                                                                                        <motion.div
+                                                                                            key={imgIdx}
+                                                                                            initial={{ opacity: 0, scale: 0.95 }}
+                                                                                            animate={{ opacity: 1, scale: 1 }}
+                                                                                            transition={{ delay: idx * 0.1 + imgIdx * 0.05 }}
+                                                                                            className="w-full"
+                                                                                        >
+                                                                                            <Image 
+                                                                                                src={img} 
+                                                                                                alt={`${item.name} - ${imgIdx + 1}`}
+                                                                                                width={1920}
+                                                                                                height={1080}
+                                                                                                sizes="100vw"
+                                                                                                className="w-full h-auto object-contain rounded-lg"
+                                                                                                loading="lazy"
+                                                                                                quality={85}
+                                                                                            />
+                                                                                        </motion.div>
+                                                                                    ))}
+                                                                                </div>
+                                                                            </>
+                                                                        )}
+                                                                    </div>
+                                                                )}
                                                             </motion.div>
                                                         ))}
                                                     </div>
-                                                )}
-
-                                                {/* Galería horizontal minimalista tipo carrusel infinito */}
-                                                {serviceMosaics[service.id] && serviceMosaics[service.id].length > 0 && (() => {
-                                                    const visuals = serviceMosaics[service.id]
-
-                                                    return (
-                                                        <div className="mt-6 sm:mt-8 space-y-4">
-                                                            <div className="flex items-center justify-between text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] text-neutral-400">
-                                                                <span>Selected visuals</span>
-                                                                <span>{visuals.length.toString().padStart(2, '0')}</span>
-                                                            </div>
-                                                            <div className="relative -mx-4 sm:mx-0 overflow-hidden">
-                                                                <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent" />
-                                                                <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent" />
-                                                                <motion.div
-                                                                    initial={{ x: 0 }}
-                                                                    animate={{ x: ['0%', '-50%'] }}
-                                                                    transition={{
-                                                                        repeat: Infinity,
-                                                                        repeatType: 'loop',
-                                                                        ease: 'linear',
-                                                                        duration: 30,
-                                                                    }}
-                                                                    className="flex gap-4 sm:gap-5 pb-3 pl-4 sm:pl-0 min-w-max"
-                                                                >
-                                                                    {[...visuals, ...visuals].map((src, idx) => (
-                                                                        <div
-                                                                            key={src + idx}
-                                                                            className="flex-shrink-0 rounded-xl sm:rounded-2xl px-0 py-0 sm:px-0 sm:py-0 min-w-[180px] sm:min-w-[220px] max-w-xs"
-                                                                        >
-                                                                            <div className="w-full h-40 sm:h-52 flex items-center justify-center">
-                                                                                <img
-                                                                                    src={src}
-                                                                                    alt={`${service.content.title} piece ${((idx % visuals.length) + 1).toString()}`}
-                                                                                    className="max-h-full max-w-full object-contain"
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    ))}
-                                                                </motion.div>
-                                                            </div>
-                                                        </div>
                                                     )
-                                                })()}
+                                                )}
                                             </div>
                                         </div>
                                     </motion.div>

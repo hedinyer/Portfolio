@@ -17,6 +17,14 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <link
+                    rel="preload"
+                    href="/andreaphoto.png"
+                    as="image"
+                    type="image/png"
+                />
+            </head>
             <body className={`${outfit.className} antialiased`}>
                 <ReduxProvider>
                     {children}
