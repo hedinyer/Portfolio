@@ -222,3 +222,4 @@ export default function LogofolioExpanded({ isOpen, onClose }: LogofolioExpanded
     )
 }
 
+

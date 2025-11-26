@@ -8,6 +8,48 @@ import * as THREE from 'three'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const serviceMosaics: Record<string, string[]> = {
+    logofolio: [
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/LOGOFOLIO/Frame%2071.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/LOGOFOLIO/Frame%2072.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/LOGOFOLIO/Frame%2073.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/LOGOFOLIO/Frame%2074.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/LOGOFOLIO/Frame%2075.png',
+    ],
+    visual: [
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/1.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/2.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/3.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/4.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/5.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/6.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/GEOPARQUE/7.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/NÚA%20ELEGIDAS/Manual de Marca NÚA_compressed_page-0001.jpg',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/NÚA%20ELEGIDAS/Manual de Marca NÚA_compressed_page-0004.jpg',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/NÚA%20ELEGIDAS/Manual de Marca NÚA_compressed_page-0007.jpg',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/SERES%20ELEGIDAS/MANUAL SERES_compressed_page-0001.jpg',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/SERES%20ELEGIDAS/MANUAL SERES_compressed_page-0004.jpg',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/IDENTIDAD%20VISUAL/SERES%20ELEGIDAS/MANUAL SERES_compressed_page-0008.jpg',
+    ],
+    illustration: [
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Babilio/177871161.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Babilio/Frame%2077.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Calendario/177871160.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Calendario/Frame%2076.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Otro/177871162.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/ILUSTRACION/Otro/177871163.png',
+    ],
+    social: [
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/REDES%20SOCIALES/177871164.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/REDES%20SOCIALES/177871165.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/REDES%20SOCIALES/177871166.png',
+    ],
+    ux: [
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/UX%20UI/177871167.png',
+        '/PORTAFOLIO%20PAGINA%20WEB/PORTAFOLIO%20PAGINA%20WEB/UX%20UI/177871168.png',
+    ],
+}
+
 const services = [
     { 
         id: 'logofolio', 
@@ -229,26 +271,84 @@ export default function Services() {
 
                                             {/* Content */}
                                             <div className="relative z-10">
-                                                <p className="text-base sm:text-lg md:text-xl leading-relaxed text-neutral-800 mb-8 sm:mb-12 max-w-3xl">
-                                                    {service.content.description}
-                                                </p>
+                                                {/* Encabezado de la categoría */}
+                                                <div className="mb-8 sm:mb-10">
+                                                    <h4 className="text-sm uppercase tracking-[0.25em] text-neutral-500 mb-4">
+                                                        {service.name}
+                                                    </h4>
+                                                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-4">
+                                                        {service.content.title}
+                                                    </h3>
+                                                    <p className="text-base sm:text-lg md:text-xl leading-relaxed text-neutral-700 max-w-3xl">
+                                                        {service.content.description}
+                                                    </p>
+                                                </div>
 
+                                                {/* Lista de proyectos / piezas */}
                                                 {service.content.items.length > 0 && (
-                                                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                                                    <div className="space-y-5 sm:space-y-6 mb-10">
                                                         {service.content.items.map((item, idx) => (
                                                             <motion.div
                                                                 key={idx}
-                                                                initial={{ opacity: 0, y: 20 }}
+                                                                initial={{ opacity: 0, y: 10 }}
                                                                 animate={{ opacity: 1, y: 0 }}
-                                                                transition={{ delay: idx * 0.1 }}
-                                                                className="border-b border-blue-600/20 pb-4 sm:pb-6"
+                                                                transition={{ delay: idx * 0.06 }}
+                                                                className="border-l border-neutral-200 pl-4 sm:pl-6"
                                                             >
-                                                                <h5 className="text-xl sm:text-2xl md:text-3xl font-medium text-blue-600 mb-2 tracking-tighter">{item.name}</h5>
-                                                                <p className="text-sm sm:text-base md:text-lg text-neutral-600 leading-relaxed">{item.description}</p>
+                                                                <h5 className="text-lg sm:text-xl font-medium text-neutral-900 mb-1">
+                                                                    {item.name}
+                                                                </h5>
+                                                                <p className="text-sm sm:text-base text-neutral-600 leading-relaxed max-w-2xl">
+                                                                    {item.description}
+                                                                </p>
                                                             </motion.div>
                                                         ))}
                                                     </div>
                                                 )}
+
+                                                {/* Galería horizontal minimalista tipo carrusel infinito */}
+                                                {serviceMosaics[service.id] && serviceMosaics[service.id].length > 0 && (() => {
+                                                    const visuals = serviceMosaics[service.id]
+
+                                                    return (
+                                                        <div className="mt-6 sm:mt-8 space-y-4">
+                                                            <div className="flex items-center justify-between text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] text-neutral-400">
+                                                                <span>Selected visuals</span>
+                                                                <span>{visuals.length.toString().padStart(2, '0')}</span>
+                                                            </div>
+                                                            <div className="relative -mx-4 sm:mx-0 overflow-hidden">
+                                                                <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent" />
+                                                                <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent" />
+                                                                <motion.div
+                                                                    initial={{ x: 0 }}
+                                                                    animate={{ x: ['0%', '-50%'] }}
+                                                                    transition={{
+                                                                        repeat: Infinity,
+                                                                        repeatType: 'loop',
+                                                                        ease: 'linear',
+                                                                        duration: 30,
+                                                                    }}
+                                                                    className="flex gap-4 sm:gap-5 pb-3 pl-4 sm:pl-0 min-w-max"
+                                                                >
+                                                                    {[...visuals, ...visuals].map((src, idx) => (
+                                                                        <div
+                                                                            key={src + idx}
+                                                                            className="flex-shrink-0 rounded-xl sm:rounded-2xl px-0 py-0 sm:px-0 sm:py-0 min-w-[180px] sm:min-w-[220px] max-w-xs"
+                                                                        >
+                                                                            <div className="w-full h-40 sm:h-52 flex items-center justify-center">
+                                                                                <img
+                                                                                    src={src}
+                                                                                    alt={`${service.content.title} piece ${((idx % visuals.length) + 1).toString()}`}
+                                                                                    className="max-h-full max-w-full object-contain"
+                                                                                />
+                                                                            </div>
+                                                                        </div>
+                                                                    ))}
+                                                                </motion.div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })()}
                                             </div>
                                         </div>
                                     </motion.div>
