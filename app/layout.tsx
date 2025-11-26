@@ -20,9 +20,9 @@ export default function RootLayout({
             <head>
                 <link
                     rel="preload"
-                    href="/andreaphoto.png"
+                    href="/andrea.jpg"
                     as="image"
-                    type="image/png"
+                    type="image/jpeg"
                 />
             </head>
             <body className={`${outfit.className} antialiased`}>

@@ -16,7 +16,7 @@ export default function About() {
                     >
                         <div className="w-full h-full rounded-[1rem] sm:rounded-[1.5rem] overflow-hidden bg-neutral-100 relative">
                             <Image 
-                                src="/andreaphoto.png" 
+                                src="/andrea.jpg" 
                                 alt="Andrea Rodriguez" 
                                 width={600}
                                 height={800}
