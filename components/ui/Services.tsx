@@ -314,7 +314,7 @@ export default function Services() {
                                                     service.id === 'logofolio' ? (
                                                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                                                             {service.content.items.map((item, idx) => (
-                                                                item.image && (
+                                                                'image' in item && item.image && (
                                                                     <motion.div
                                                                         key={idx}
                                                                         initial={{ opacity: 0, scale: 0.95 }}
@@ -346,7 +346,7 @@ export default function Services() {
                                                                     transition={{ delay: idx * 0.1 }}
                                                                     className="border-b border-blue-600/20 pb-8 sm:pb-12"
                                                                 >
-                                                                    {item.image && (
+                                                                    {'image' in item && item.image && (
                                                                         <div className="w-full aspect-square flex items-center justify-center bg-white/5 rounded-lg p-4 sm:p-6">
                                                                             <Image 
                                                                                 src={item.image} 
@@ -360,7 +360,7 @@ export default function Services() {
                                                                             />
                                                                         </div>
                                                                     )}
-                                                                {item.images && item.images.length > 0 && (
+                                                                {'images' in item && item.images && item.images.length > 0 && (
                                                                     <div>
                                                                         {(item.name === 'Calendar' || item.name === 'Character design "Babilio"') ? (
                                                                             <>
@@ -412,7 +412,7 @@ export default function Services() {
                                                                         ) : item.name === 'Website' ? (
                                                                             <>
                                                                                 <div className="space-y-2 sm:space-y-4">
-                                                                                    {item.images.map((img, imgIdx) => (
+                                                                                    {item.images.map((img: string, imgIdx: number) => (
                                                                                         <motion.div
                                                                                             key={imgIdx}
                                                                                             initial={{ opacity: 0, scale: 0.95 }}
@@ -439,7 +439,7 @@ export default function Services() {
                                                                                 <h5 className="text-xl sm:text-2xl md:text-3xl font-medium text-blue-600 mb-4 sm:mb-6 tracking-tighter">{item.name}</h5>
                                                                                 <p className="text-sm sm:text-base md:text-lg text-neutral-600 leading-relaxed mb-6 sm:mb-8">{item.description}</p>
                                                                                 <div className="space-y-2 sm:space-y-4">
-                                                                                    {item.images.map((img, imgIdx) => (
+                                                                                    {item.images.map((img: string, imgIdx: number) => (
                                                                                         <motion.div
                                                                                             key={imgIdx}
                                                                                             initial={{ opacity: 0, scale: 0.95 }}
@@ -466,7 +466,7 @@ export default function Services() {
                                                                                 <h5 className="text-xl sm:text-2xl md:text-3xl font-medium text-blue-600 mb-6 sm:mb-8 tracking-tighter">{item.name}</h5>
                                                                                 <p className="text-sm sm:text-base md:text-lg text-neutral-600 leading-relaxed mb-6 sm:mb-8">{item.description}</p>
                                                                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                                                                                    {item.images.map((img, imgIdx) => (
+                                                                                    {item.images.map((img: string, imgIdx: number) => (
                                                                                         <motion.div
                                                                                             key={imgIdx}
                                                                                             initial={{ opacity: 0, scale: 0.95 }}
