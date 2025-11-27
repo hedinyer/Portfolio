@@ -49,7 +49,9 @@ export default function Footer() {
                         <div>
                             <p className="text-xs sm:text-sm text-blue-600/60">Schedule a Call</p>
                             <a 
-                                href="mailto:andreacrodriguez99@gmail.com?subject=Let's%20Work%20Together" 
+                                href="https://calendly.com/artificial-company-local/30min" 
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 hover:bg-blue-600 text-xs sm:text-sm font-medium text-white tracking-tight bg-blue-600 border-blue-600/20 border rounded-full mt-2 pt-2.5 sm:pt-3 pr-4 sm:pr-5 pb-2.5 sm:pb-3 pl-4 sm:pl-5 transition-colors duration-200"
                             >
                                 <svg 
