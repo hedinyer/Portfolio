@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "name": "Andrea Rodríguez",
+    "title": "Andrea Rodríguez — Diseñadora industrial",
+    "description": "Portafolio de Andrea Rodríguez, diseñadora industrial y visualizadora en Colombia. Identidad visual, branding e ilustración digital.",
+    "ogAlt": "Retrato de Andrea Rodríguez"
+  },
+  "nav": {
+    "work": "Proyectos",
+    "archive": "Archivo",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "home": "Inicio"
+  },
+  "cursor": {
+    "view": "Ver"
+  },
+  "home": {
+    "bio": "Hola, soy <about>Andrea Rodríguez</about>, diseñadora industrial y visualizadora en Colombia. Mi trabajo se centra en identidad visual, branding e ilustración digital, en proyectos donde una idea se vuelve una imagen con personalidad propia. Para encargos o colaboraciones, escríbeme a <email>andreacrodriguez99@gmail.com</email>.",
+    "servicesLabel": "Servicios",
+    "services": {
+      "identity": "Identidad visual",
+      "branding": "Branding",
+      "illustration": "Ilustración",
+      "logofolio": "Logofolio",
+      "ux": "UX UI"
+    }
+  },
+  "work": {
+    "title": "Proyectos",
+    "next": "Siguiente proyecto",
+    "role": "Rol",
+    "year": "Año",
+    "collaboration": "Colaboración",
+    "index": "Índice"
+  },
+  "cases": {
+    "nua": {
+      "title": "NÚA",
+      "category": "Identidad visual",
+      "summary": "Buscando conectar más con su público, la marca apuntaba a una imagen femenina, delicada y fresca, con una energía serena. La identidad fluye por todos los elementos, de la papelería a la ropa.",
+      "role": "Identidad de marca",
+      "alt": "Sistema de identidad visual de NÚA"
+    },
+    "seres": {
+      "title": "SERES",
+      "category": "Identidad visual",
+      "summary": "SERES es un espacio de bienestar en las montañas. La identidad invita a vivir la transformación, la reflexión y la tranquilidad a través del color, la experiencia y el concepto.",
+      "role": "Identidad de marca",
+      "alt": "Sistema de identidad visual de SERES"
+    },
+    "geoparque": {
+      "title": "Geoparque Cañón del Chicamocha",
+      "category": "Identidad visual",
+      "summary": "Para el registro ante la UNESCO, el proyecto recoge los valores naturales y comunitarios del Cañón del Chicamocha, en Santander. Fue un trabajo multidisciplinario, en conversación constante con la cultura local.",
+      "role": "Identidad y dirección visual",
+      "alt": "Identidad visual del Geoparque Cañón del Chicamocha"
+    },
+    "geoparque-web": {
+      "title": "Geoparque, sitio web",
+      "category": "UX UI",
+      "summary": "Diseño y desarrollo de principio a fin. La interfaz reúne la información del Geoparque Cañón del Chicamocha para quien quiere conocer el lugar y recorrerlo.",
+      "role": "Diseño de interfaz",
+      "alt": "Interfaz del sitio del Geoparque Cañón del Chicamocha"
+    },
+    "babilio": {
+      "title": "Babilio",
+      "category": "Ilustración",
+      "summary": "Para una propuesta de aplicación universitaria, el equipo creó a Babilio, un personaje inspirado en el caimán del campus. El proyecto incluye al personaje y seis ilustraciones en distintas actividades.",
+      "role": "Ilustración de personaje",
+      "alt": "Ilustraciones del personaje Babilio"
+    },
+    "calendario": {
+      "title": "Calendario",
+      "category": "Ilustración",
+      "summary": "Calendario personal con ilustraciones que evocan calma, frescura y amistad. Personajes cercanos habitan escenas cotidianas de cada estación.",
+      "role": "Ilustración",
+      "alt": "Ilustraciones del calendario de estaciones"
+    }
+  },
+  "archive": {
+    "title": "Archivo",
+    "all": "Todo",
+    "close": "Cerrar",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "filters": {
+      "logo": "Logofolio",
+      "illustration": "Ilustración",
+      "social": "Redes"
+    },
+    "items": {
+      "fidu": {
+        "title": "Fidu",
+        "category": "Logofolio",
+        "summary": "Logo de un proyecto académico."
+      },
+      "lumar": {
+        "title": "Lumar Prestige",
+        "category": "Logofolio",
+        "summary": "Identidad para una marca de lujo."
+      },
+      "snow": {
+        "title": "SNOW",
+        "category": "Logofolio",
+        "summary": "Marca para una colección de invierno."
+      },
+      "vierco": {
+        "title": "VIERCO",
+        "category": "Logofolio",
+        "summary": "Identidad corporativa."
+      },
+      "huevos": {
+        "title": "Huevos JVC",
+        "category": "Logofolio",
+        "summary": "Marca para un producto agrícola."
+      },
+      "ilustracion-1": {
+        "title": "Ilustración 01",
+        "category": "Ilustración",
+        "summary": "Ilustración digital personal."
+      },
+      "ilustracion-2": {
+        "title": "Ilustración 02",
+        "category": "Ilustración",
+        "summary": "Ilustración digital personal."
+      },
+      "redes-1": {
+        "title": "Redes 01",
+        "category": "Redes sociales",
+        "summary": "Pieza para redes sociales."
+      },
+      "redes-2": {
+        "title": "Redes 02",
+        "category": "Redes sociales",
+        "summary": "Pieza para redes sociales."
+      },
+      "redes-3": {
+        "title": "Redes 03",
+        "category": "Redes sociales",
+        "summary": "Pieza para redes sociales."
+      }
+    }
+  },
+  "about": {
+    "title": "Sobre mí",
+    "role": "Diseñadora industrial · visualizadora",
+    "description": "Soy diseñadora industrial en Colombia, especializada en branding e ilustración digital. Me interesa crear y fortalecer proyectos con un estilo propio, y transmitir mensajes con personalidad. Creo que cada idea puede volverse una imagen que conecta con las personas.",
+    "toolsTitle": "Herramientas",
+    "toolsDescription": "También uso herramientas de inteligencia artificial en la ideación, la coordinación, el desarrollo de conceptos y la exploración.",
+    "tools": {
+      "adobe": "Adobe Suite",
+      "figma": "Figma",
+      "blender": "Blender",
+      "clipStudio": "Clip Studio Paint"
+    },
+    "portraitAlt": "Retrato de Andrea Rodríguez"
+  },
+  "experience": {
+    "title": "Dónde he trabajado",
+    "roles": {
+      "graphicDesigner": "Diseñadora gráfica",
+      "industrialDesigner": "Diseñadora industrial",
+      "designAssistant": "Asistente de diseño"
+    },
+    "entries": {
+      "olfi": { "company": "Olfi Studio", "role": "graphicDesigner", "period": "Abril 2025 — actualidad" },
+      "uisDegree": { "company": "Universidad Industrial de Santander", "role": "industrialDesigner", "period": "Febrero 2025" },
+      "amv": { "company": "AMV SAS", "role": "graphicDesigner", "period": "Abril 2024 — noviembre 2024" },
+      "uisProject": { "company": "Universidad Industrial de Santander", "role": "industrialDesigner", "period": "Agosto 2024 — octubre 2024" },
+      "screaming": { "company": "Screaming Color", "role": "industrialDesigner", "period": "Diciembre 2023 — marzo 2024" },
+      "uisAssistant": { "company": "Universidad Industrial de Santander", "role": "designAssistant", "period": "Abril 2022 — julio 2023" }
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "lead": "¿Hablamos de un proyecto?",
+    "copy": "Escríbeme. Te respondo con disponibilidad y una forma clara de trabajar.",
+    "copyLabel": "Copiar correo",
+    "copied": "Copiado"
+  },
+  "footer": {
+    "crafted": "Hecho en Colombia"
+  },
+  "notFound": {
+    "title": "Esta página no está",
+    "back": "Volver al inicio"
+  }
+}

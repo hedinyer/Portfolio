@@ -1,45 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f3f1;
+  --foreground: #141414;
+  --muted: #6d6a64;
+  --line: rgba(20, 20, 20, 0.16);
+  --header-h: 4.25rem;
 }
 
-@theme {
+@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-sans: var(--font-geist), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: var(--font-instrument), "Times New Roman", serif;
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-*/
-@layer base {
-
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+html {
+  background: var(--background);
+  color: var(--foreground);
 }
 
 body {
+  min-height: 100dvh;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  text-rendering: optimizeLegibility;
 }
 
-@utility stroke-text {
-  -webkit-text-stroke: 2px white;
+::selection {
+  background: var(--foreground);
+  color: var(--background);
 }
 
-@utility stroke-text-sm {
-  -webkit-text-stroke: 1px white;
+:focus-visible {
+  outline: 1px solid var(--foreground);
+  outline-offset: 3px;
 }
 
-@utility stroke-text-blue {
-  -webkit-text-stroke: 2px #2563eb;
+@media (hover: hover) and (pointer: fine) {
+  body.has-cursor,
+  body.has-cursor a,
+  body.has-cursor button {
+    cursor: none;
+  }
+}
+
+.page-inset {
+  padding: var(--header-h) 1.25rem 4.5rem;
+}
+
+@media (min-width: 768px) {
+  .page-inset {
+    padding: 5.5rem 2rem 5rem;
+  }
+}
+
+::view-transition-old(root) {
+  animation: fade-out 0.45s cubic-bezier(0.77, 0, 0.18, 1) both;
+}
+
+::view-transition-new(root) {
+  animation: fade-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

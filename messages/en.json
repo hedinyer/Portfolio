@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "name": "Andrea Rodríguez",
+    "title": "Andrea Rodríguez — Industrial designer",
+    "description": "Portfolio of Andrea Rodríguez, an industrial designer and visualizer based in Colombia. Visual identity, branding, and digital illustration.",
+    "ogAlt": "Portrait of Andrea Rodríguez"
+  },
+  "nav": {
+    "work": "Projects",
+    "archive": "Archive",
+    "about": "About",
+    "contact": "Contact",
+    "home": "Home"
+  },
+  "cursor": {
+    "view": "View"
+  },
+  "home": {
+    "bio": "Hi, I’m <about>Andrea Rodríguez</about>, an industrial designer and visualizer based in Colombia. My work focuses on visual identity, branding, and digital illustration, especially where an idea can become an image with a personality of its own. For commissions or collaborations, write to me at <email>andreacrodriguez99@gmail.com</email>.",
+    "servicesLabel": "Services",
+    "services": {
+      "identity": "Visual identity",
+      "branding": "Branding",
+      "illustration": "Illustration",
+      "logofolio": "Logofolio",
+      "ux": "UX UI"
+    }
+  },
+  "work": {
+    "title": "Projects",
+    "next": "Next project",
+    "role": "Role",
+    "year": "Year",
+    "collaboration": "Collaboration",
+    "index": "Index"
+  },
+  "cases": {
+    "nua": {
+      "title": "NÚA",
+      "category": "Visual identity",
+      "summary": "To connect more closely with its audience, the brand aimed for a feminine, delicate, and fresh image with a calm energy. The identity runs through every touchpoint, from stationery to clothing.",
+      "role": "Brand identity",
+      "alt": "NÚA visual identity system"
+    },
+    "seres": {
+      "title": "SERES",
+      "category": "Visual identity",
+      "summary": "SERES is a wellness space in the mountains. The identity invites its audience into transformation, reflection, and quiet, through color, experience, and concept.",
+      "role": "Brand identity",
+      "alt": "SERES visual identity system"
+    },
+    "geoparque": {
+      "title": "Chicamocha Canyon Geopark",
+      "category": "Visual identity",
+      "summary": "Developed for a UNESCO geopark application, the project captures the natural and community values of the Chicamocha Canyon in Santander, Colombia. It was a multidisciplinary effort in constant conversation with local culture.",
+      "role": "Identity and visual direction",
+      "alt": "Visual identity for the Chicamocha Canyon Geopark"
+    },
+    "geoparque-web": {
+      "title": "Geopark, website",
+      "category": "UX UI",
+      "summary": "An end-to-end design and development project. The interface gathers everything about the Chicamocha Canyon Geopark for anyone who wants to learn about the place and explore it.",
+      "role": "Interface design",
+      "alt": "Website interface for the Chicamocha Canyon Geopark"
+    },
+    "babilio": {
+      "title": "Babilio",
+      "category": "Illustration",
+      "summary": "For a university app proposal, the team created Babilio, a character inspired by the caiman that lives on campus. The project includes the character and six illustrations of it in different activities.",
+      "role": "Character illustration",
+      "alt": "Illustrations of the character Babilio"
+    },
+    "calendario": {
+      "title": "Calendar",
+      "category": "Illustration",
+      "summary": "A personal calendar of illustrations about calm, freshness, and friendship. Familiar characters inhabit everyday scenes from each season.",
+      "role": "Illustration",
+      "alt": "Seasonal calendar illustrations"
+    }
+  },
+  "archive": {
+    "title": "Archive",
+    "all": "All",
+    "close": "Close",
+    "previous": "Previous",
+    "next": "Next",
+    "filters": {
+      "logo": "Logofolio",
+      "illustration": "Illustration",
+      "social": "Social"
+    },
+    "items": {
+      "fidu": {
+        "title": "Fidu",
+        "category": "Logofolio",
+        "summary": "Logo for an academic project."
+      },
+      "lumar": {
+        "title": "Lumar Prestige",
+        "category": "Logofolio",
+        "summary": "Identity for a luxury brand."
+      },
+      "snow": {
+        "title": "SNOW",
+        "category": "Logofolio",
+        "summary": "Brand for a winter collection."
+      },
+      "vierco": {
+        "title": "VIERCO",
+        "category": "Logofolio",
+        "summary": "Corporate identity."
+      },
+      "huevos": {
+        "title": "Huevos JVC",
+        "category": "Logofolio",
+        "summary": "Brand for an agricultural product."
+      },
+      "ilustracion-1": {
+        "title": "Illustration 01",
+        "category": "Illustration",
+        "summary": "Personal digital illustration."
+      },
+      "ilustracion-2": {
+        "title": "Illustration 02",
+        "category": "Illustration",
+        "summary": "Personal digital illustration."
+      },
+      "redes-1": {
+        "title": "Social 01",
+        "category": "Social media",
+        "summary": "Social media piece."
+      },
+      "redes-2": {
+        "title": "Social 02",
+        "category": "Social media",
+        "summary": "Social media piece."
+      },
+      "redes-3": {
+        "title": "Social 03",
+        "category": "Social media",
+        "summary": "Social media piece."
+      }
+    }
+  },
+  "about": {
+    "title": "About",
+    "role": "Industrial designer · visualizer",
+    "description": "I am an industrial designer based in Colombia, focused on branding and digital illustration. I like to build projects with a style of their own, and to carry messages that feel personal. I believe an idea can become an image that connects with people.",
+    "toolsTitle": "Tools",
+    "toolsDescription": "I also use AI tools through ideation, coordination, concept development, and exploration.",
+    "tools": {
+      "adobe": "Adobe Suite",
+      "figma": "Figma",
+      "blender": "Blender",
+      "clipStudio": "Clip Studio Paint"
+    },
+    "portraitAlt": "Portrait of Andrea Rodríguez"
+  },
+  "experience": {
+    "title": "Where I’ve worked",
+    "roles": {
+      "graphicDesigner": "Graphic designer",
+      "industrialDesigner": "Industrial designer",
+      "designAssistant": "Design assistant"
+    },
+    "entries": {
+      "olfi": { "company": "Olfi Studio", "role": "graphicDesigner", "period": "April 2025 — present" },
+      "uisDegree": { "company": "Universidad Industrial de Santander", "role": "industrialDesigner", "period": "February 2025" },
+      "amv": { "company": "AMV SAS", "role": "graphicDesigner", "period": "April 2024 — November 2024" },
+      "uisProject": { "company": "Universidad Industrial de Santander", "role": "industrialDesigner", "period": "August 2024 — October 2024" },
+      "screaming": { "company": "Screaming Color", "role": "industrialDesigner", "period": "December 2023 — March 2024" },
+      "uisAssistant": { "company": "Universidad Industrial de Santander", "role": "designAssistant", "period": "April 2022 — July 2023" }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "lead": "Have a project in mind?",
+    "copy": "Write to me. I’ll reply with availability and a clear way of working.",
+    "copyLabel": "Copy email",
+    "copied": "Copied"
+  },
+  "footer": {
+    "crafted": "Made in Colombia"
+  },
+  "notFound": {
+    "title": "This page isn’t here",
+    "back": "Back home"
+  }
+}
