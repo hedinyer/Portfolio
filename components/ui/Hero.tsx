@@ -1,7 +1,10 @@
 'use client'
 import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Hero() {
+    const { t } = useLanguage()
+    
     return (
         <section className="relative z-10 flex min-h-screen flex-col items-center justify-center pointer-events-none bg-transparent text-blue-600">
             <motion.div
@@ -11,9 +14,9 @@ export default function Hero() {
                 className="text-center"
             >
                 <h1 className="text-[14vw] sm:text-[12vw] leading-[0.8] font-black tracking-tighter px-4">
-                    ANDREA
+                    {t.hero.title}
                     <br />
-                    <span className="text-transparent stroke-text-blue">RODRIGUEZ</span>
+                    <span className="text-transparent stroke-text-blue">{t.hero.subtitle}</span>
                 </h1>
             </motion.div>
 
@@ -24,7 +27,7 @@ export default function Hero() {
                 className="mt-6 sm:mt-8 flex flex-col items-center gap-2 px-4"
             >
                 <p className="text-base sm:text-xl font-light tracking-[0.2em] sm:tracking-[0.3em] uppercase text-blue-500 text-center">
-                    Industrial Designer | Visualizer
+                    {t.hero.role}
                 </p>
                 <div className="h-12 sm:h-16 w-[1px] bg-blue-600/50 mt-6 sm:mt-8" />
             </motion.div>

@@ -1,9 +1,11 @@
 'use client'
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function About() {
+    const { t } = useLanguage()
     return (
         <section className="relative z-10 min-h-screen flex flex-col justify-center py-12 sm:py-20 px-4 sm:px-8 md:px-20 bg-transparent text-blue-600">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
@@ -37,32 +39,26 @@ export default function About() {
                 {/* Right Column - Content */}
                 <div className="lg:col-span-8 flex flex-col gap-10 sm:gap-16 pt-4 sm:pt-8">
                     <div>
-                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-3 sm:mb-4 tracking-tighter">About me</h2>
+                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-3 sm:mb-4 tracking-tighter">{t.about.title}</h2>
                         <h3 className="text-2xl sm:text-3xl md:text-4xl font-light mb-4 sm:mb-8 text-blue-500">
-                            Graphic designer | visulizer
+                            {t.about.subtitle}
                         </h3>
                         <p className="text-base sm:text-lg md:text-xl leading-relaxed text-neutral-800 max-w-3xl">
-                            I am a Industrial designer based in Colombia, specialized in branding and
-                            digital illustration. My passion is to create and strengthen projects that
-                            stand out for their unique style, conveying authentic messages full of
-                            personality. Inspired by boundless creativity, I believe in the power of
-                            every idea to be transformed into an image that connects with people.
+                            {t.about.description}
                         </p>
                     </div>
 
                     <div>
-                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 sm:mb-8 tracking-tighter">My tools</h2>
+                        <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 sm:mb-8 tracking-tighter">{t.about.toolsTitle}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                             <ul className="text-lg sm:text-xl leading-loose text-neutral-800">
-                                <li>Adobe Suite</li>
-                                <li>Figma</li>
-                                <li>Blender</li>
-                                <li>Clip Studio Paint</li>
+                                <li>{t.about.tools.adobe}</li>
+                                <li>{t.about.tools.figma}</li>
+                                <li>{t.about.tools.blender}</li>
+                                <li>{t.about.tools.clipStudio}</li>
                             </ul>
                             <p className="text-lg sm:text-xl leading-relaxed text-neutral-600">
-                                Also using <span className="font-bold text-black">AI tools</span> across process of ideation,
-                                coordinaation, concept development and creative
-                                exploration
+                                {t.about.toolsDescription}
                             </p>
                         </div>
                     </div>

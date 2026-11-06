@@ -1,6 +1,8 @@
 'use client'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Footer() {
+    const { t } = useLanguage()
     const currentYear = new Date().getFullYear()
 
     return (
@@ -14,14 +16,14 @@ export default function Footer() {
 
                 <div className="relative">
                     <h2 className="text-[16vw] sm:text-[12vw] lg:text-[9vw] leading-[0.9] font-semibold tracking-tighter">
-                        <span className="block">Ready to build</span>
-                        <span className="block text-blue-600/60 text-[13.6vw] sm:text-[12vw] lg:text-[9vw]">something extraordinary?</span>
+                        <span className="block">{t.footer.ready}</span>
+                        <span className="block text-blue-600/60 text-[13.6vw] sm:text-[12vw] lg:text-[9vw]">{t.footer.something}</span>
                     </h2>
 
                     <div className="mt-6 sm:mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
                         {/* Email */}
                         <div>
-                            <p className="text-xs sm:text-sm text-blue-600/60">Get Started</p>
+                            <p className="text-xs sm:text-sm text-blue-600/60">{t.footer.getStarted}</p>
                             <a 
                                 href="mailto:andreacrodriguez99@gmail.com" 
                                 className="mt-2 inline-flex items-center gap-2 sm:gap-3 text-base sm:text-xl md:text-2xl font-medium tracking-tight text-blue-600 hover:text-blue-500 transition-colors"
@@ -47,7 +49,7 @@ export default function Footer() {
 
                         {/* Call */}
                         <div>
-                            <p className="text-xs sm:text-sm text-blue-600/60">Schedule a Call</p>
+                            <p className="text-xs sm:text-sm text-blue-600/60">{t.footer.scheduleCall}</p>
                             <a 
                                 href="https://calendly.com/artificial-company-local/30min" 
                                 target="_blank"
@@ -71,13 +73,13 @@ export default function Footer() {
                                     <rect width="18" height="18" x="3" y="4" rx="2"></rect>
                                     <path d="M3 10h18"></path>
                                 </svg>
-                                <span>Book a Meeting</span>
+                                <span>{t.footer.bookMeeting}</span>
                             </a>
                         </div>
 
                         {/* Social */}
                         <div>
-                            <p className="text-sm text-blue-600/60">Follow Along</p>
+                            <p className="text-sm text-blue-600/60">{t.footer.followAlong}</p>
                             <div className="flex flex-wrap gap-3 mt-2 items-center">
                                 <a 
                                     href="#" 
@@ -187,27 +189,27 @@ export default function Footer() {
                     <div className="mt-4 sm:mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         {/* Menu */}
                         <div>
-                            <p className="text-xs sm:text-sm text-blue-600/60">Explore</p>
+                            <p className="text-xs sm:text-sm text-blue-600/60">{t.footer.explore}</p>
                             <div className="mt-2 sm:mt-3 grid grid-cols-2 gap-2 text-xs sm:text-sm">
-                                <a href="#about" className="font-medium tracking-tight hover:underline text-blue-600">About</a>
-                                <a href="#services" className="font-medium tracking-tight hover:underline text-blue-600">Services</a>
-                                <a href="#experience" className="font-medium tracking-tight hover:underline text-blue-600">Experience</a>
-                                <a href="#contact" className="font-medium tracking-tight hover:underline text-blue-600">Contact</a>
+                                <a href="#about" className="font-medium tracking-tight hover:underline text-blue-600">{t.footer.about}</a>
+                                <a href="#services" className="font-medium tracking-tight hover:underline text-blue-600">{t.footer.services}</a>
+                                <a href="#experience" className="font-medium tracking-tight hover:underline text-blue-600">{t.footer.experience}</a>
+                                <a href="#contact" className="font-medium tracking-tight hover:underline text-blue-600">{t.footer.contact}</a>
                             </div>
                         </div>
 
                         {/* Legal */}
                         <div>
-                            <p className="text-xs sm:text-sm text-blue-600/60">Fine Print</p>
+                            <p className="text-xs sm:text-sm text-blue-600/60">{t.footer.finePrint}</p>
                             <div className="mt-2 sm:mt-3 grid grid-cols-1 gap-2 text-xs sm:text-sm">
-                                <a href="#" className="font-medium tracking-tight hover:underline text-blue-600">Terms & Conditions</a>
-                                <a href="#" className="font-medium tracking-tight hover:underline text-blue-600">Privacy Notice</a>
+                                <a href="#" className="font-medium tracking-tight hover:underline text-blue-600">{t.footer.terms}</a>
+                                <a href="#" className="font-medium tracking-tight hover:underline text-blue-600">{t.footer.privacy}</a>
                             </div>
                         </div>
                     </div>
 
                     <p className="mt-4 sm:mt-6 text-center text-[10px] sm:text-xs text-blue-600/70 px-4">
-                        © {currentYear} Andrea Rodriguez — Crafted with care in Colombia
+                        © {currentYear} Andrea Rodriguez — {t.footer.crafted}
                     </p>
                 </div>
             </div>

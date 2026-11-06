@@ -1,41 +1,44 @@
 'use client'
-import { useRef } from 'react'
+import { useRef, useMemo } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
-const experiences = [
+const getExperiences = (t: any) => [
     {
         company: "Olfi Studio",
-        role: "Graphic Designer",
-        period: "April 2025 - present"
+        role: t.experience.roles.graphicDesigner,
+        period: t.experience.periods.olfi
     },
     {
         company: "Universidad Industrial de Santander",
-        role: "Industrial designer",
-        period: "February 2025"
+        role: t.experience.roles.industrialDesigner,
+        period: t.experience.periods.uisDegree
     },
     {
         company: "AMV SAS",
-        role: "Graphic Designer",
-        period: "April 2024 - November 2024"
+        role: t.experience.roles.graphicDesigner,
+        period: t.experience.periods.amv
     },
     {
         company: "Universidad Industrial de Santander",
-        role: "Industrial designer",
-        period: "August 2024 - October 2024"
+        role: t.experience.roles.industrialDesigner,
+        period: t.experience.periods.uisProject
     },
     {
         company: "Screaming Color",
-        role: "Industrial Designer",
-        period: "December 2023 - March 2024"
+        role: t.experience.roles.industrialDesigner,
+        period: t.experience.periods.screaming
     },
     {
         company: "Universidad Industrial de Santander",
-        role: "Design assitant",
-        period: "April 2022 - July 2023"
+        role: t.experience.roles.designAssistant,
+        period: t.experience.periods.uisAssistant
     }
 ]
 
 export default function Experience() {
+    const { t } = useLanguage()
+    const experiences = useMemo(() => getExperiences(t), [t])
     const containerRef = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -50,7 +53,7 @@ export default function Experience() {
                 style={{ y }}
                 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-12 sm:mb-20 tracking-tighter"
             >
-                Where I've worked
+                {t.experience.title}
             </motion.h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 sm:gap-x-20 gap-y-8 sm:gap-y-12">

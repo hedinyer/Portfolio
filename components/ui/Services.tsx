@@ -1,41 +1,42 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
 import MatrixASCII from './MatrixASCII'
 import * as THREE from 'three'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const services = [
+const getServices = (t: any) => [
     { 
         id: 'logofolio', 
-        name: "01 Logofolio",
+        name: t.services.logofolio.name,
         content: {
-            title: "Logofolio",
-            description: "Through my experience as a designer, I have created logos for academic projects, solo ventures, and businesses.",
+            title: t.services.logofolio.title,
+            description: t.services.logofolio.description,
             items: [
-                { name: 'fidu', description: 'Academic project logo', image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 71.png' },
-                { name: 'Lumar Prestige', description: 'Luxury brand identity', image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 72.png' },
-                { name: 'SNOW', description: 'Winter collection brand', image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 73.png' },
-                { name: 'VIERCO', description: 'Corporate identity', image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 74.png' },
-                { name: 'HUEVOS JVC', description: 'Agricultural brand', image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 75.png' },
-                { name: 'sanfy', description: 'Modern tech brand' }
+                { name: 'fidu', description: t.services.logofolio.items.fidu, image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 71.png' },
+                { name: 'Lumar Prestige', description: t.services.logofolio.items.lumar, image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 72.png' },
+                { name: 'SNOW', description: t.services.logofolio.items.snow, image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 73.png' },
+                { name: 'VIERCO', description: t.services.logofolio.items.vierco, image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 74.png' },
+                { name: 'HUEVOS JVC', description: t.services.logofolio.items.huevos, image: '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/LOGOFOLIO/Frame 75.png' },
+                { name: 'sanfy', description: t.services.logofolio.items.sanfy }
             ]
         }
     },
     { 
         id: 'visual', 
-        name: "03 Visual Identity",
+        name: t.services.visual.name,
         content: {
-            title: "Visual Identity",
-            description: "Complete brand identity systems that communicate your brand's essence.",
+            title: t.services.visual.title,
+            description: t.services.visual.description,
             items: [
                 { 
                     name: 'NÚA', 
-                    description: "Seeking to connect more with its target audience, the brand aimed for a feminine, delicate, fresh image with a calm energy, creating an identity that flows through all brand elements, from stationery to clothing.",
+                    description: t.services.visual.nua,
                     images: [
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0001.jpg',
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/NÚA ELEGIDAS/Manual de Marca NÚA_compressed_page-0004.jpg',
@@ -56,7 +57,7 @@ const services = [
                 },
                 { 
                     name: 'SERES', 
-                    description: "SERES is a wellness space located in the mountains that wanted to create a visual identity inviting its audience to experience transformation, reflection, and tranquility through colors, experiences, and concepts. A project created in collaboration with the support of Julián Uscategui.",
+                    description: t.services.visual.seres,
                     images: [
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0001.jpg',
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/SERES ELEGIDAS/MANUAL SERES_compressed_page-0004.jpg',
@@ -75,7 +76,7 @@ const services = [
                 },
                 { 
                     name: 'Geopark Canyon Chicamocha', 
-                    description: "To meet UNESCO's requirements for registration as a geopark, this project was developed to capture the natural and community values of the Chicamocha Canyon in Santander, Colombia. It was a multidisciplinary effort with constant interaction with the local culture to establish a true connection with its people. Academic project in collaboration with Astrid Aillón and Ana Niño.",
+                    description: t.services.visual.geopark,
                     images: [
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/GEOPARQUE/1.png',
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/IDENTIDAD VISUAL/GEOPARQUE/2.png',
@@ -91,14 +92,14 @@ const services = [
     },
     { 
         id: 'illustration', 
-        name: "04 Illustration",
+        name: t.services.illustration.name,
         content: {
-            title: "Illustration",
-            description: "Digital illustrations that bring ideas to life with style and creativity.",
+            title: t.services.illustration.title,
+            description: t.services.illustration.description,
             items: [
                 { 
                     name: 'Character design "Babilio"', 
-                    description: "As part of a university app proposal, the team created \"Babilio,\" a character inspired by the caiman living on campus, to build a friendly connection with users and bring life to the app's blank spaces. The project included the creation of this character and six illustrations of it performing different activities for various occasions.",
+                    description: t.services.illustration.babilio,
                     images: [
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Babilio/177871161.png',
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Babilio/Frame 77.png'
@@ -106,7 +107,7 @@ const services = [
                 },
                 { 
                     name: 'Calendar', 
-                    description: "As a personal project, I created this calendar with illustrations that evoke feelings of tranquility, freshness, and friendship through friendly, memorable characters depicted in picturesque everyday scenes from each season of the year.",
+                    description: t.services.illustration.calendar,
                     images: [
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Calendario/177871160.png',
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Calendario/Frame 76.png'
@@ -114,7 +115,7 @@ const services = [
                 },
                 { 
                     name: 'Personal digital artwork', 
-                    description: "A collection of personal digital illustrations showcasing various styles and subjects, from fantasy landscapes to whimsical character designs and portraits.",
+                    description: t.services.illustration.personal,
                     images: [
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Otro/177871162.png',
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/ILUSTRACION/Otro/177871163.png'
@@ -125,14 +126,14 @@ const services = [
     },
     { 
         id: 'social', 
-        name: "05 Social Media",
+        name: t.services.social.name,
         content: {
-            title: "Social Media",
-            description: "Engaging social media content and campaigns that connect with your audience.",
+            title: t.services.social.title,
+            description: t.services.social.description,
             items: [
                 {
                     name: 'Social Media Content',
-                    description: "A collection of engaging social media content and campaigns designed to connect with audiences.",
+                    description: t.services.social.content,
                     images: [
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/REDES SOCIALES/177871164.png',
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/REDES SOCIALES/177871165.png',
@@ -144,14 +145,14 @@ const services = [
     },
     { 
         id: 'ux', 
-        name: "06 UX UI Study",
+        name: t.services.ux.name,
         content: {
-            title: "UX UI Study",
-            description: "User experience and interface design studies focused on usability and aesthetics.",
+            title: t.services.ux.title,
+            description: t.services.ux.description,
             items: [
                 {
                     name: 'Website',
-                    description: "An end-to-end web design and development project, from the initial planning stage to final implementation. The focus was on creating a user interface that centralizes all information about the 'Geopark Canyon Chicamocha' project, making it engaging for those interested in learning about and exploring the site.",
+                    description: t.services.ux.website,
                     images: [
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/UX UI/177871168.png',
                         '/PORTAFOLIO PAGINA WEB/PORTAFOLIO PAGINA WEB/UX UI/177871167.png'
@@ -163,6 +164,8 @@ const services = [
 ]
 
 export default function Services() {
+    const { t } = useLanguage()
+    const services = useMemo(() => getServices(t), [t])
     const containerRef = useRef<HTMLDivElement>(null)
     const [expandedIds, setExpandedIds] = useState<string[]>([])
     const canvasRefs = useRef<Map<string, HTMLDivElement>>(new Map())
@@ -274,7 +277,7 @@ export default function Services() {
 
     return (
         <section ref={containerRef} className="relative z-10 min-h-screen flex flex-col justify-center py-12 sm:py-20 px-4 sm:px-8 md:px-20 bg-transparent text-blue-600">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-12 sm:mb-20 tracking-tighter">What you'll find here</h2>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-12 sm:mb-20 tracking-tighter">{t.services.title}</h2>
             <div className="flex flex-col gap-2 sm:gap-4">
                 {services.map((service, i) => {
                     const isExpanded = expandedIds.includes(service.id)
