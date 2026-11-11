@@ -1,35 +1,24 @@
-import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
-import "./globals.css";
-import ReduxProvider from "@/components/ReduxProvider";
+import type { ReactNode } from 'react'
+import { Inter, Instrument_Serif } from 'next/font/google'
+import './globals.css'
 
-const outfit = Outfit({ subsets: ["latin"] });
+const inter = Inter({
+    subsets: ['latin'],
+    weight: ['400', '500', '700'],
+    variable: '--font-inter',
+})
 
-export const metadata: Metadata = {
-    title: "Designer Portfolio",
-    description: "Dither + Shaders Portfolio",
-};
+const instrument = Instrument_Serif({
+    subsets: ['latin'],
+    weight: '400',
+    style: ['normal', 'italic'],
+    variable: '--font-instrument',
+})
 
-export default function RootLayout({
-    children,
-}: Readonly<{
-    children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
     return (
-        <html lang="en">
-            <head>
-                <link
-                    rel="preload"
-                    href="/andrea.jpg"
-                    as="image"
-                    type="image/jpeg"
-                />
-            </head>
-            <body className={`${outfit.className} antialiased`}>
-                <ReduxProvider>
-                    {children}
-                </ReduxProvider>
-            </body>
+        <html lang="es" className={`${inter.variable} ${instrument.variable}`} suppressHydrationWarning>
+            <body className="antialiased">{children}</body>
         </html>
-    );
+    )
 }
