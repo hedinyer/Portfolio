@@ -16,25 +16,33 @@
     "view": "View"
   },
   "home": {
-    "bio": "Hi, I’m <about>Andrea Rodríguez</about>, an industrial designer and visualizer based in Colombia. My work focuses on visual identity, branding, and digital illustration, especially where an idea can become an image with a personality of its own. For commissions or collaborations, write to me at <email>andreacrodriguez99@gmail.com</email>.",
-    "servicesLabel": "Services",
+    "bio": "Hi, I’m <about>Andrea</about>, an industrial designer with a background in UX/UI. My work revolves around building user-centered visual experiences, creating a real connection between design and people. I specialize in branding and have worked end to end on graphic design projects, where research and information structure shape clear, user-centered experiences. For inquiries or collaborations, you can write to me at <email>andreacrodriguez99@gmail.com</email>.",
+    "servicesLabel": "SERVICES",
     "services": {
-      "identity": "Visual identity",
+      "ux": "UX UI",
       "branding": "Branding",
-      "illustration": "Illustration",
       "logofolio": "Logofolio",
-      "ux": "UX UI"
+      "editorial": "Editorial",
+      "graphic": "Graphic design"
     }
   },
   "work": {
     "title": "Projects",
-    "next": "Next project",
+    "next": "Next",
+    "previous": "Previous",
     "role": "Role",
     "year": "Year",
     "collaboration": "Collaboration",
-    "index": "Index"
+    "index": "Index",
+    "all": "All",
+    "filters": {
+      "identity": "Identity",
+      "illustration": "Illustration",
+      "ux": "UX UI"
+    }
   },
   "cases": {
+    "categoryLabel": "Category",
     "nua": {
       "title": "NÚA",
       "category": "Visual identity",
@@ -180,7 +188,8 @@
     "copied": "Copied"
   },
   "footer": {
-    "crafted": "Made in Colombia"
+    "crafted": "Made in Colombia",
+    "backToTop": "Back to top"
   },
   "notFound": {
     "title": "This page isn’t here",

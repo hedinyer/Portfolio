@@ -10,20 +10,22 @@ export default async function WorkPage({ params }: { params: Promise<{ locale: s
     setRequestLocale(locale)
 
     const casesCopy = await getTranslations({ locale, namespace: 'cases' })
-    const work = await getTranslations({ locale, namespace: 'work' })
 
     return (
-        <main>
+        <main className="page-inset">
             <WorkGallery
-                heading={work('title')}
-                indexLabel={work('index')}
-                items={cases.map((project) => ({
-                    slug: project.slug,
-                    title: casesCopy(`${project.slug}.title`),
-                    category: casesCopy(`${project.slug}.category`),
-                    alt: casesCopy(`${project.slug}.alt`),
-                    cover: project.cover,
-                }))}
+                items={cases.map((project) => {
+                    const hover = project.gallery[1]
+                    return {
+                        slug: project.slug,
+                        title: casesCopy(`${project.slug}.title`),
+                        category: casesCopy(`${project.slug}.category`),
+                        categoryKey: project.category,
+                        alt: casesCopy(`${project.slug}.alt`),
+                        cover: project.cover,
+                        hover: hover && hover.src !== project.cover.src ? hover : null,
+                    }
+                })}
             />
         </main>
     )

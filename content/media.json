@@ -290,18 +290,18 @@
     ],
     "vierco": [
       {
-        "src": "/work/vierco/01.webp",
-        "width": 414,
-        "height": 504,
-        "blurDataURL": "data:image/webp;base64,UklGRsYAAABXRUJQVlA4WAoAAAAQAAAACwAADgAAQUxQSIEAAAABgGNt2zHnHdueFUzHyvbswdYCprbDzumsyskCUjnp7CV4rB1ExATAwAi9HdUDvdpoHJO6ZRuNRmOpi/DuqtFo/Ms70rc7jUajMd1x8nY6M7b3d9bxdFe0u79uPjtKsfry8tbuVQeYyXwRXYXukoIpU8AFnegQzENG3EXBAQA8jBQAVlA4IB4AAAAwAQCdASoMAA8ABABoJaQAA3AA/vEMlN0CdNnbgAA="
-      }
-    ],
-    "huevos": [
-      {
         "src": "/work/huevos/01.webp",
         "width": 420,
         "height": 386,
         "blurDataURL": "data:image/webp;base64,UklGRqwAAABXRUJQVlA4WAoAAAAQAAAACwAACgAAQUxQSGkAAAABcFvbtqK8ySZW3N0yd9fQHTJCaMBpwYncIZuIBkjpgAroYqSGiJgAYGIi4Nlx8kj9Xzau+9nGY2btubiMOjrLBQgCPhxA1iVqwXDD/MspHX66uLmc19F38FOOnwLbYb9tmcIXBW57EwAAVlA4IBwAAAAwAQCdASoMAAsACABoJaQAA3AA/vI3t9KQAAAA"
+      }
+    ],
+    "huevos": [
+      {
+        "src": "/work/vierco/01.webp",
+        "width": 414,
+        "height": 504,
+        "blurDataURL": "data:image/webp;base64,UklGRsYAAABXRUJQVlA4WAoAAAAQAAAACwAADgAAQUxQSIEAAAABgGNt2zHnHdueFUzHyvbswdYCprbDzumsyskCUjnp7CV4rB1ExATAwAi9HdUDvdpoHJO6ZRuNRmOpi/DuqtFo/Ms70rc7jUajMd1x8nY6M7b3d9bxdFe0u79uPjtKsfry8tbuVQeYyXwRXYXukoIpU8AFnegQzENG3EXBAQA8jBQAVlA4IB4AAAAwAQCdASoMAA8ABABoJaQAA3AA/vEMlN0CdNnbgAA="
       }
     ],
     "ilustracion-1": [

@@ -10,7 +10,7 @@ export function LanguageToggle() {
     const router = useRouter()
 
     return (
-        <div className="flex gap-2" aria-label="Language">
+        <div className="flex gap-[0.4em]" aria-label="Language">
             {routing.locales.map((item) => {
                 const active = item === locale
                 return (
@@ -20,7 +20,7 @@ export function LanguageToggle() {
                         lang={item}
                         aria-current={active ? 'true' : undefined}
                         onClick={() => router.replace(pathname, { locale: item as Locale })}
-                        className={active ? 'text-inherit' : 'opacity-40 hover:opacity-100'}
+                        className={`capitalize ${active ? 'text-link' : 'text-link-hover hover:text-link'}`}
                     >
                         {item}
                     </button>

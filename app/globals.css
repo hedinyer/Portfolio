@@ -1,20 +1,40 @@
 @import "tailwindcss";
 
+/*
+ * --u is one design pixel of the reference canvas:
+ * 320px wide on phones, 1024px wide on desktop (scaling stops at 3600px).
+ */
 :root {
-  --background: #f4f3f1;
-  --foreground: #141414;
-  --muted: #6d6a64;
-  --line: rgba(20, 20, 20, 0.16);
-  --header-h: 4.25rem;
+  --background: #f7f7f7;
+  --foreground: #2b2b2b;
+  --link: #000000;
+  --link-hover: #757575;
+  --muted: #9d9d9d;
+  --micro: #797777;
+  --line: rgba(43, 43, 43, 0.16);
+  --u: calc(100vw / 320);
+  --header-h: calc(44 * var(--u));
+}
+
+@media (min-width: 768px) {
+  :root {
+    --u: calc(min(100vw, 3600px) / 1024);
+    --header-h: calc(53 * var(--u));
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
   --color-muted: var(--muted);
+  --color-micro: var(--micro);
   --color-line: var(--line);
-  --font-sans: var(--font-geist), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-inter), "Neue Haas Grotesk Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-serif: var(--font-instrument), "Times New Roman", serif;
+  --font-nav: var(--font-sans);
+  --spacing-u: var(--u);
 }
 
 html {
@@ -27,14 +47,22 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 1.5;
-  letter-spacing: -0.011em;
+  font-weight: 500;
+  font-size: calc(13 * var(--u));
+  line-height: calc(16 * var(--u));
+  letter-spacing: calc(-0.5 * var(--u));
   text-rendering: optimizeLegibility;
 }
 
+@media (min-width: 768px) {
+  body {
+    font-size: calc(11 * var(--u));
+    line-height: calc(14 * var(--u));
+  }
+}
+
 ::selection {
-  background: var(--foreground);
+  background: #a2a2a2;
   color: var(--background);
 }
 
@@ -43,30 +71,157 @@ body {
   outline-offset: 3px;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  body.has-cursor,
-  body.has-cursor a,
-  body.has-cursor button {
-    cursor: none;
+/* Reference text roles. Sizes are design px (phone / desktop). */
+@layer components {
+  /* Nav: 13/13 phone, 12/12 desktop, medium, -0.5 tracking */
+  .t-nav {
+    font-weight: 500;
+    font-size: calc(13 * var(--u));
+    line-height: calc(13 * var(--u));
+    letter-spacing: calc(-0.5 * var(--u));
+  }
+
+  /* Bio / body (“boton”): 13/16 phone, 11/14 desktop */
+  .t-body {
+    font-weight: 500;
+    font-size: calc(13 * var(--u));
+    line-height: calc(16 * var(--u));
+    letter-spacing: calc(-0.5 * var(--u));
+    color: var(--foreground);
+  }
+
+  /* Project captions (“des-pro”): 13/15 phone, 11/13 desktop */
+  .t-caption {
+    font-weight: 500;
+    font-size: calc(13 * var(--u));
+    line-height: calc(15 * var(--u));
+    letter-spacing: calc(-0.4 * var(--u));
+    color: var(--foreground);
+  }
+
+  /* Services-style label: 9/11 phone, 8/10 desktop, bold uppercase grey */
+  .t-label {
+    font-weight: 700;
+    font-size: calc(9 * var(--u));
+    line-height: calc(11 * var(--u));
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Running text (“text sans”): 12/15 phone, 10/13 desktop, regular */
+  .t-text {
+    font-weight: 400;
+    font-size: calc(12 * var(--u));
+    line-height: calc(15 * var(--u));
+    letter-spacing: calc(-0.3 * var(--u));
+    color: var(--foreground);
+  }
+
+  /* Titles (“TIT”): 13/13 phone, 11/11 desktop */
+  .t-title {
+    font-weight: 500;
+    font-size: calc(13 * var(--u));
+    line-height: calc(13 * var(--u));
+    letter-spacing: calc(-0.4 * var(--u));
+    color: var(--foreground);
+  }
+
+  /* Small grey meta (“micro”): 10/13 phone, 9/12 desktop */
+  .t-micro {
+    font-weight: 400;
+    font-size: calc(10 * var(--u));
+    line-height: calc(13 * var(--u));
+    letter-spacing: calc(-0.5 * var(--u));
+    color: var(--micro);
+  }
+
+  /* “Next project” style link: 13, medium, underlined */
+  .t-next {
+    font-weight: 500;
+    font-size: calc(13 * var(--u));
+    line-height: calc(15 * var(--u));
+    letter-spacing: calc(-0.5 * var(--u));
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
+  /* Reference link behaviour: black, instant grey on hover, no underline change */
+  .link {
+    color: var(--link);
+    transition: none;
+  }
+
+  .link:hover {
+    color: var(--link-hover);
+  }
+
+  @media (min-width: 768px) {
+    .t-nav {
+      font-size: calc(12 * var(--u));
+      line-height: calc(12 * var(--u));
+    }
+
+    .t-body {
+      font-size: calc(11 * var(--u));
+      line-height: calc(14 * var(--u));
+    }
+
+    .t-caption {
+      font-size: calc(11 * var(--u));
+      line-height: calc(13 * var(--u));
+      letter-spacing: calc(-0.5 * var(--u));
+    }
+
+    .t-label {
+      font-size: calc(8 * var(--u));
+      line-height: calc(10 * var(--u));
+    }
+
+    .t-text {
+      font-size: calc(10 * var(--u));
+      line-height: calc(13 * var(--u));
+    }
+
+    .t-title {
+      font-size: calc(11 * var(--u));
+      line-height: calc(11 * var(--u));
+    }
+
+    .t-micro {
+      font-size: calc(9 * var(--u));
+      line-height: calc(12 * var(--u));
+    }
   }
 }
 
+/* Pages below the fixed nav: 53/44 design px top, 11/8 design px sides */
 .page-inset {
-  padding: var(--header-h) 1.25rem 4.5rem;
+  padding: var(--header-h) calc(8 * var(--u)) calc(60 * var(--u));
 }
 
 @media (min-width: 768px) {
   .page-inset {
-    padding: 5.5rem 2rem 5rem;
+    padding: var(--header-h) calc(11 * var(--u)) calc(80 * var(--u));
   }
 }
 
+@keyframes nav-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.nav-in {
+  animation: nav-in 0.8s ease-out 0.4s both;
+}
+
 ::view-transition-old(root) {
-  animation: fade-out 0.45s cubic-bezier(0.77, 0, 0.18, 1) both;
+  animation: fade-out 0.5s ease-in both;
 }
 
 ::view-transition-new(root) {
-  animation: fade-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fade-in 0.5s ease-out both;
 }
 
 @keyframes fade-out {

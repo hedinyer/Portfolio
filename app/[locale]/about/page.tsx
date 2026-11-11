@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Experience } from '@/components/about/Experience'
-import { RevealImage, RevealText } from '@/components/motion'
 import { portrait } from '@/content/projects'
-import { Link } from '@/i18n/navigation'
 import { isLocale } from '@/i18n/routing'
 
 const toolKeys = ['adobe', 'figma', 'blender', 'clipStudio'] as const
@@ -37,51 +36,47 @@ export default async function AboutPage({ params }: PageProps) {
     setRequestLocale(locale)
 
     const about = await getTranslations('about')
-    const nav = await getTranslations('nav')
 
     return (
-        <main className="page-inset">
-            <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
-                <RevealImage
-                    media={portrait}
-                    alt={about('portraitAlt')}
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    priority
-                    className="aspect-[800/946] w-full shadow-[inset_0_0_0_1px_oklch(0_0_0/0.1)] lg:col-span-5"
-                />
-                <div className="lg:col-span-7 lg:pt-2">
-                    <p className="text-[12px] uppercase tracking-[0.16em]">{about('title')}</p>
-                    <RevealText
-                        as="h1"
-                        className="mt-5 max-w-[16ch] font-serif text-[clamp(2.75rem,6vw,5.6rem)] italic leading-[0.92] tracking-[-0.03em] text-balance"
-                    >
-                        {about('role')}
-                    </RevealText>
-                    <RevealText className="mt-8 max-w-[66ch] text-pretty text-[16px] leading-relaxed">
-                        {about('description')}
-                    </RevealText>
+        <main className="page-inset animate-[fade-in_0.5s_ease-out_both]">
+            <div className="grid items-start gap-y-[calc(24*var(--u))] md:grid-cols-[calc(328*var(--u))_minmax(0,1fr)] md:gap-x-[calc(9*var(--u))] md:gap-y-0">
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    <Image
+                        src={portrait.src}
+                        alt={about('portraitAlt')}
+                        fill
+                        sizes="(max-width: 767px) 95vw, 32vw"
+                        priority
+                        placeholder="blur"
+                        blurDataURL={portrait.blurDataURL}
+                        className="object-cover"
+                    />
+                </div>
 
-                    <section className="mt-16 border-t border-line pt-8">
-                        <h2 className="text-[12px] uppercase tracking-[0.16em]">{about('toolsTitle')}</h2>
-                        <ul className="mt-6 grid gap-x-10 sm:grid-cols-2">
-                            {toolKeys.map((tool) => (
-                                <li key={tool} className="border-b border-line py-3 text-[15px]">
-                                    {about(`tools.${tool}`)}
-                                </li>
-                            ))}
-                        </ul>
-                        <p className="mt-6 max-w-[58ch] text-pretty text-[14px] leading-relaxed text-muted">
-                            {about('toolsDescription')}
-                        </p>
-                    </section>
+                <div className="min-w-0 md:max-w-[calc(492*var(--u))]">
+                    <p className="t-body text-pretty">{about('description')}</p>
+
+                    <div className="mt-[calc(28*var(--u))] flex flex-col gap-[calc(16*var(--u))]">
+                        <div>
+                            <h1 className="t-label">{about('title')}</h1>
+                            <p className="t-label">{about('role')}</p>
+                        </div>
+                        <div>
+                            <h2 className="t-label">{about('toolsTitle')}</h2>
+                            <ul>
+                                {toolKeys.map((tool) => (
+                                    <li key={tool} className="t-label">
+                                        {about(`tools.${tool}`)}
+                                    </li>
+                                ))}
+                            </ul>
+                            <p className="t-text mt-[calc(8*var(--u))] text-pretty">{about('toolsDescription')}</p>
+                        </div>
+                    </div>
+
+                    <Experience />
                 </div>
             </div>
-
-            <Experience />
-
-            <Link href="/contact" className="mt-2 inline-flex min-h-11 items-center text-[12px] uppercase tracking-[0.16em] underline underline-offset-4">
-                {nav('contact')}
-            </Link>
         </main>
     )
 }

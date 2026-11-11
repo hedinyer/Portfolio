@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
-import { Magnetic } from '@/components/motion'
 import { site } from '@/content/site'
 
 export function CopyEmail() {
@@ -25,25 +24,22 @@ export function CopyEmail() {
     }
 
     return (
-        <div className="mt-14 flex flex-col items-start gap-8 md:mt-20">
+        <div className="mt-[calc(22*var(--u))] flex flex-col items-start gap-[calc(6*var(--u))]">
             <a
                 href={`mailto:${site.email}`}
-                className="max-w-full font-serif text-[clamp(2rem,7.4vw,6.75rem)] italic leading-[0.9] tracking-[-0.03em] break-words text-balance underline decoration-foreground/25 underline-offset-[0.12em]"
+                className="t-body link underline decoration-current underline-offset-[0.15em] md:no-underline"
             >
-                <span aria-live="polite">{copied ? t('copied') : site.email}</span>
+                {site.email}
             </a>
-            <Magnetic>
-                <button
-                    type="button"
-                    onClick={() => {
-                        void copy()
-                    }}
-                    aria-label={t('copyLabel')}
-                    className="min-h-11 text-[12px] uppercase tracking-[0.16em] underline underline-offset-4"
-                >
-                    {t('copyLabel')}
-                </button>
-            </Magnetic>
+            <button
+                type="button"
+                onClick={() => {
+                    void copy()
+                }}
+                className="t-next link cursor-pointer border-0 bg-transparent p-0"
+            >
+                <span aria-live="polite">{copied ? t('copied') : t('copyLabel')}</span>
+            </button>
         </div>
     )
 }

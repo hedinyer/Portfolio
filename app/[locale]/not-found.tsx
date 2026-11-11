@@ -5,9 +5,9 @@ export default function NotFound() {
     const t = useTranslations('notFound')
 
     return (
-        <main className="page-inset flex min-h-[70dvh] flex-col justify-end gap-6">
-            <h1 className="font-serif text-5xl italic md:text-7xl">{t('title')}</h1>
-            <Link href="/" className="text-[12px] uppercase tracking-[0.16em]">
+        <main className="page-inset box-border flex min-h-dvh animate-[fade-in_0.5s_ease-out_both] flex-col items-start">
+            <h1 className="t-body">{t('title')}</h1>
+            <Link href="/" className="t-next link mt-[calc(14*var(--u))] inline-block">
                 {t('back')}
             </Link>
         </main>

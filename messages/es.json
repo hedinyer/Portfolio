@@ -16,25 +16,33 @@
     "view": "Ver"
   },
   "home": {
-    "bio": "Hola, soy <about>Andrea Rodríguez</about>, diseñadora industrial y visualizadora en Colombia. Mi trabajo se centra en identidad visual, branding e ilustración digital, en proyectos donde una idea se vuelve una imagen con personalidad propia. Para encargos o colaboraciones, escríbeme a <email>andreacrodriguez99@gmail.com</email>.",
-    "servicesLabel": "Servicios",
+    "bio": "Hola, soy <about>Andrea</about>, diseñadora industrial con formación en UX/UI. Mi trabajo gira en torno a construir experiencias visuales centradas en el usuario, lo que me permite generar una conexión real entre el diseño y las personas. Me destaco en procesos de branding y he participado de forma integral en proyectos de diseño gráfico, con proyectos donde la investigación y la estructura de la información dan forma a experiencias claras y centradas en el usuario. Para consultas o colaboraciones, puedes escribirme a <email>andreacrodriguez99@gmail.com</email>.",
+    "servicesLabel": "SERVICIOS",
     "services": {
-      "identity": "Identidad visual",
+      "ux": "UX UI",
       "branding": "Branding",
-      "illustration": "Ilustración",
       "logofolio": "Logofolio",
-      "ux": "UX UI"
+      "editorial": "Editorial",
+      "graphic": "Diseño gráfico"
     }
   },
   "work": {
     "title": "Proyectos",
-    "next": "Siguiente proyecto",
+    "next": "Siguiente",
+    "previous": "Anterior",
     "role": "Rol",
     "year": "Año",
     "collaboration": "Colaboración",
-    "index": "Índice"
+    "index": "Índice",
+    "all": "Todo",
+    "filters": {
+      "identity": "Identidad",
+      "illustration": "Ilustración",
+      "ux": "UX UI"
+    }
   },
   "cases": {
+    "categoryLabel": "Categoría",
     "nua": {
       "title": "NÚA",
       "category": "Identidad visual",
@@ -180,7 +188,8 @@
     "copied": "Copiado"
   },
   "footer": {
-    "crafted": "Hecho en Colombia"
+    "crafted": "Hecho en Colombia",
+    "backToTop": "Volver arriba"
   },
   "notFound": {
     "title": "Esta página no está",

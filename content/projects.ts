@@ -20,6 +20,11 @@ export type Project = {
     gallery: Media[]
 }
 
+export type HomeSlide = {
+    media: Media
+    slug: string
+}
+
 const media = mediaJson as {
     portrait: Media
     projects: Record<string, Media[]>
@@ -83,15 +88,30 @@ export function getNextCase(slug: string) {
     return cases[(index + 1) % cases.length]
 }
 
-function pick(slug: string, index: number) {
+function slide(slug: string, index: number): HomeSlide {
     const gallery = media.projects[slug]
-    return gallery[Math.min(index, gallery.length - 1)]
+    const item = gallery[Math.min(index, gallery.length - 1)]
+    return { media: item, slug }
 }
 
-export const homeFrames: Media[][] = [
-    [pick('nua', 0), pick('seres', 0), pick('babilio', 0), pick('calendario', 0)],
-    [pick('geoparque', 0), pick('nua', 4), pick('seres', 5), pick('geoparque-web', 0)],
-    [pick('seres', 2), pick('geoparque', 2), pick('nua', 8), pick('babilio', 1)],
+/** Mixed-aspect home strip inspired by ladycalma.xyz organization. */
+export const homeSlides: HomeSlide[] = [
+    slide('nua', 0),
+    slide('seres', 0),
+    slide('geoparque', 0),
+    slide('geoparque-web', 0),
+    slide('babilio', 0),
+    slide('calendario', 0),
+    slide('nua', 4),
+    slide('seres', 2),
+    slide('geoparque', 2),
+    slide('seres', 5),
+    slide('nua', 8),
+    slide('babilio', 1),
+    slide('calendario', 1),
+    slide('geoparque', 4),
+    slide('seres', 8),
+    slide('nua', 12),
 ]
 
 export function imageSpan(item: Media): 'wide' | 'tall' | 'square' {

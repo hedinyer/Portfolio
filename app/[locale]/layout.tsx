@@ -1,25 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Geist, Instrument_Serif } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
-import { Cursor, PageTransition, Preloader, SmoothScroll } from '@/components/motion'
 import { Header } from '@/components/site/Header'
 import { SiteFooter } from '@/components/site/Footer'
 import { SiteChrome } from '@/components/site/SiteChrome'
+import { HtmlLang } from '@/components/site/HtmlLang'
 import { isLocale, routing } from '@/i18n/routing'
-
-const geist = Geist({
-    subsets: ['latin'],
-    variable: '--font-geist',
-})
-
-const instrument = Instrument_Serif({
-    subsets: ['latin'],
-    weight: '400',
-    style: ['normal', 'italic'],
-    variable: '--font-instrument',
-})
 
 type LocaleParams = { locale: string }
 
@@ -70,19 +57,10 @@ export default async function LocaleLayout({
     const messages = await getMessages()
 
     return (
-        <html lang={locale} className={`${geist.variable} ${instrument.variable}`}>
-            <body className="antialiased">
-                <NextIntlClientProvider locale={locale} messages={messages}>
-                    <SmoothScroll>
-                        <Preloader />
-                        <Header />
-                        <Cursor />
-                        <PageTransition>
-                            <SiteChrome footer={<SiteFooter />}>{children}</SiteChrome>
-                        </PageTransition>
-                    </SmoothScroll>
-                </NextIntlClientProvider>
-            </body>
-        </html>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+            <HtmlLang />
+            <Header />
+            <SiteChrome footer={<SiteFooter />}>{children}</SiteChrome>
+        </NextIntlClientProvider>
     )
 }

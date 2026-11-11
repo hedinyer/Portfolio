@@ -4,12 +4,12 @@ import { usePathname } from '@/i18n/navigation'
 
 export function SiteChrome({ children, footer }: { children: React.ReactNode; footer: React.ReactNode }) {
     const pathname = usePathname()
-    const home = pathname === '/'
+    const hideFooter = pathname === '/'
 
     return (
         <>
             {children}
-            {home ? null : footer}
+            {hideFooter ? null : footer}
         </>
     )
 }
