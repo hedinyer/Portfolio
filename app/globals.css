@@ -292,6 +292,19 @@ body {
   }
 }
 
+/* Dot / ring only on interactive work — keeps the normal OS cursor elsewhere */
+@media (hover: hover) and (pointer: fine) {
+  a,
+  button,
+  summary,
+  label[for],
+  [role='button'],
+  [data-cursor],
+  .home-shot {
+    cursor: url('/cursor/ring.svg') 16 16, pointer;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -191,5 +191,5 @@ export function homeStripCss() {
         })
         .join('')
 
-    return `@keyframes home-counter-in{from{opacity:0}}.home-counter{animation:home-counter-in 0.8s ease both}.home-shot{pointer-events:auto;touch-action:pan-y;cursor:url("/cursor/monogram.svg") 0 0,auto;transform-origin:center center;backface-visibility:hidden;will-change:transform,filter;box-shadow:0 18px 40px rgba(0,0,0,0.08),0 4px 12px rgba(0,0,0,0.04)}${phone}@media (min-width:768px){${desktop}}`
+    return `@keyframes home-counter-in{from{opacity:0}}.home-counter{animation:home-counter-in 0.8s ease both}.home-shot{pointer-events:auto;touch-action:pan-y;transform-origin:center center;backface-visibility:hidden;will-change:transform,filter;box-shadow:0 18px 40px rgba(0,0,0,0.08),0 4px 12px rgba(0,0,0,0.04)}${phone}@media (min-width:768px){${desktop}}`
 }

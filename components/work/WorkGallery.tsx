@@ -91,7 +91,7 @@ function WorkCard({ item, priority }: { item: PlacedTile; priority: boolean }) {
                 href={`/work/${item.slug}`}
                 data-cursor="view"
                 style={{ '--i': item.position } as CSSProperties}
-                className="group block w-full min-w-0 cursor-pointer max-md:[order:var(--i)]"
+                className="group block w-full min-w-0 max-md:[order:var(--i)]"
             >
                 <div
                     className="relative w-full overflow-hidden"

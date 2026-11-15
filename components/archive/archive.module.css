@@ -1,12 +1,7 @@
-.page {
-    cursor: auto;
-}
-
 .piece {
     position: relative;
     width: calc(var(--mw) * var(--u));
     margin: 0 0 calc(var(--mgap) * var(--u)) calc(var(--mx) * var(--u));
-    cursor: auto;
 }
 
 .frame {
