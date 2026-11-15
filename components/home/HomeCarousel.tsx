@@ -2,18 +2,14 @@
 
 import { useLayoutEffect, useRef, useState } from 'react'
 import { useLocale } from 'next-intl'
-import { desktopTravel, homeFrames, homeStripCss, phoneTravel } from './frames'
+import { desktopCycle, homeFrames, homeStripCss, phoneCycle } from './frames'
 import { HomeFrame } from './HomeFrame'
 
 const stripCss = homeStripCss()
+const replicas = [0, 1] as const
 
 function clamp(value: number, min: number, max: number) {
     return Math.min(max, Math.max(min, value))
-}
-
-/** Quadratic ease-in-out: t<.5 ? 2t² : 1-(2-2t)²/2 */
-function easeInOutQuad(t: number) {
-    return t < 0.5 ? 2 * t * t : 1 - ((2 - 2 * t) ** 2) / 2
 }
 
 export function useHomeCounterLabel(index: number, total: number, locale: string) {
@@ -37,8 +33,8 @@ export function HomeCarousel() {
         let frame = 0
         let alive = true
         let copyBottom = ''
+        let wrapping = false
         const phoneQuery = window.matchMedia('(max-width: 767px)')
-        const reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
 
         const syncCopy = () => {
             if (!phoneQuery.matches) return
@@ -54,14 +50,47 @@ export function HomeCarousel() {
             frame = 0
             const u = unit.getBoundingClientRect().width || 1
             const phone = phoneQuery.matches
-            const travel = (phone ? phoneTravel : desktopTravel) * u
-            const t = travel > 0 ? clamp(window.scrollY / travel, 0, 1) : 0
-            const eased = phone || reducedQuery.matches ? t : easeInOutQuad(t)
-            track.style.transform = `translate3d(${-eased * travel}px,0,0)`
+            const cyclePx = (phone ? phoneCycle : desktopCycle) * u
+            const y = window.scrollY
+            // Visual loop via modulo; optionally rewind scroll so the page never ends.
+            const shift = cyclePx > 0 ? -(y % cyclePx) : 0
+            if (!wrapping && cyclePx > 0 && y >= cyclePx) {
+                wrapping = true
+                const wrapped = y % cyclePx
+                window.scrollTo(0, wrapped)
+                wrapping = false
+            }
+            track.style.transform = `translate3d(${shift}px,0,0)`
             syncCopy()
 
-            const next = Math.min(homeFrames.length - 1, Math.round(t * (homeFrames.length - 1)))
-            setIndex((current) => (current === next ? current : next))
+            const shots = track.querySelectorAll<HTMLElement>('.home-shot')
+            const viewW = Math.max(window.innerWidth, 1)
+            const viewCenter = viewW * 0.5
+            let bestIndex = 0
+            let bestDist = Number.POSITIVE_INFINITY
+
+            shots.forEach((shot) => {
+                const centerX = shift + shot.offsetLeft + shot.offsetWidth * 0.5
+                const offset = (centerX - viewCenter) / viewW
+                const capped = clamp(offset, -1.25, 1.25)
+                const abs = Math.abs(capped)
+                const rotateY = capped * -72
+                const depth = -abs * 160
+                const scale = 1 - abs * 0.22
+                const shade = 1 - Math.min(abs * 0.45, 0.45)
+                // No translateY here — vertical position comes from CSS top only.
+                shot.style.transform = `perspective(900px) translate3d(0,0,${depth.toFixed(1)}px) rotateY(${rotateY.toFixed(2)}deg) scale(${scale.toFixed(3)})`
+                shot.style.filter = `brightness(${shade.toFixed(3)})`
+
+                const dist = Math.abs(centerX - viewCenter)
+                if (dist < bestDist) {
+                    bestDist = dist
+                    const raw = Number(shot.dataset.frame ?? 0)
+                    bestIndex = ((raw % homeFrames.length) + homeFrames.length) % homeFrames.length
+                }
+            })
+
+            setIndex((current) => (current === bestIndex ? current : bestIndex))
         }
 
         const request = () => {
@@ -95,16 +124,25 @@ export function HomeCarousel() {
                 aria-hidden
                 className="pointer-events-none fixed top-0 left-0 -z-10 h-px w-[calc(1*var(--u))] opacity-0"
             />
-            <div className="pointer-events-none fixed inset-0 z-10 overflow-clip">
-                <div ref={trackRef} className="absolute inset-y-0 left-0 w-0 will-change-transform">
-                    {homeFrames.map((frame, frameIndex) => (
-                        <HomeFrame
-                            key={`${frame.media.src}-${frameIndex}`}
-                            frame={frame}
-                            index={frameIndex}
-                            priority={frameIndex < 4}
-                        />
-                    ))}
+            <div
+                className="pointer-events-none fixed inset-0 z-10"
+                style={{ clipPath: 'inset(-24vh 0)' }}
+            >
+                <div
+                    ref={trackRef}
+                    className="absolute inset-y-0 left-0 w-0 will-change-transform"
+                >
+                    {replicas.flatMap((replica) =>
+                        homeFrames.map((frame, frameIndex) => (
+                            <HomeFrame
+                                key={`${replica}-${frame.media.src}-${frameIndex}`}
+                                frame={frame}
+                                index={frameIndex}
+                                replica={replica}
+                                priority={replica === 0 && frameIndex < 4}
+                            />
+                        )),
+                    )}
                 </div>
             </div>
             <div

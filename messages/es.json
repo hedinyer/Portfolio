@@ -43,6 +43,13 @@
   },
   "cases": {
     "categoryLabel": "Categoría",
+    "andrea-amarillo": {
+      "title": "Andrea Amarillo",
+      "category": "Identidad visual",
+      "summary": "Andrea Amarillo es una marca de joyería de autor cuyas colecciones se inspiran en Colombia y en materiales como el fique, para conectar con las tradiciones del territorio. Ante su crecimiento, la marca necesitaba una imagen más sólida en medios físicos y digitales, dirigida a un público atraído por la naturaleza, lo distinto y lo auténtico, con sensibilidad estética para potenciar la imagen personal de cada cliente.",
+      "role": "Identidad de marca",
+      "alt": "Sistema de identidad visual de Andrea Amarillo"
+    },
     "nua": {
       "title": "NÚA",
       "category": "Identidad visual",
@@ -57,12 +64,12 @@
       "role": "Identidad de marca",
       "alt": "Sistema de identidad visual de SERES"
     },
-    "geoparque": {
-      "title": "Geoparque Cañón del Chicamocha",
+    "cortteza": {
+      "title": "Cortteza",
       "category": "Identidad visual",
-      "summary": "Para el registro ante la UNESCO, el proyecto recoge los valores naturales y comunitarios del Cañón del Chicamocha, en Santander. Fue un trabajo multidisciplinario, en conversación constante con la cultura local.",
-      "role": "Identidad y dirección visual",
-      "alt": "Identidad visual del Geoparque Cañón del Chicamocha"
+      "summary": "Cortteza es una marca de mobiliario y espacios que busca una presencia cálida, contemporánea y táctil. La identidad articula logo, tipografía, color, patrones y aplicaciones para papelería y web, con una estética serena inspirada en la madera y la luz.",
+      "role": "Identidad de marca",
+      "alt": "Sistema de identidad visual de Cortteza"
     },
     "geoparque-web": {
       "title": "Geoparque, sitio web",
@@ -70,6 +77,13 @@
       "summary": "Diseño y desarrollo de principio a fin. La interfaz reúne la información del Geoparque Cañón del Chicamocha para quien quiere conocer el lugar y recorrerlo.",
       "role": "Diseño de interfaz",
       "alt": "Interfaz del sitio del Geoparque Cañón del Chicamocha"
+    },
+    "magic-decisions": {
+      "title": "Magic Decisions",
+      "category": "UX UI",
+      "summary": "Magic Decisions es una app que interrumpe la compra impulsiva en el momento crítico. Con una esfera mágica, registro emocional y preguntas reflexivas, ayuda a decidir con calma, ver el impacto en las metas financieras y reconocer patrones entre emociones y gasto.",
+      "role": "Investigación y diseño UX/UI",
+      "alt": "Caso de estudio UX UI de la app Magic Decisions"
     },
     "babilio": {
       "title": "Babilio",
@@ -98,55 +112,65 @@
       "social": "Redes"
     },
     "items": {
-      "fidu": {
-        "title": "Fidu",
+      "elevarte": {
+        "title": "ELEVARTE",
         "category": "Logofolio",
-        "summary": "Logo de un proyecto académico."
+        "summary": "Logo para una marca."
       },
       "lumar": {
         "title": "Lumar Prestige",
         "category": "Logofolio",
         "summary": "Identidad para una marca de lujo."
       },
-      "snow": {
-        "title": "SNOW",
+      "luve": {
+        "title": "LUVÉ",
         "category": "Logofolio",
-        "summary": "Marca para una colección de invierno."
+        "summary": "Logo para una marca."
       },
-      "vierco": {
-        "title": "VIERCO",
+      "tiffany": {
+        "title": "TIFFANY",
         "category": "Logofolio",
-        "summary": "Identidad corporativa."
+        "summary": "Logo para una marca."
       },
-      "huevos": {
-        "title": "Huevos JVC",
+      "rubrica": {
+        "title": "Rúbrica.lat",
         "category": "Logofolio",
-        "summary": "Marca para un producto agrícola."
+        "summary": "Logo para una marca."
       },
-      "ilustracion-1": {
-        "title": "Ilustración 01",
-        "category": "Ilustración",
-        "summary": "Ilustración digital personal."
+      "bae": {
+        "title": "bae",
+        "category": "Logofolio",
+        "summary": "Logo para una marca."
       },
-      "ilustracion-2": {
-        "title": "Ilustración 02",
-        "category": "Ilustración",
-        "summary": "Ilustración digital personal."
+      "mela": {
+        "title": "melao",
+        "category": "Logofolio",
+        "summary": "Logo para una marca."
       },
-      "redes-1": {
-        "title": "Redes 01",
+      "sanfy": {
+        "title": "sanfy",
+        "category": "Logofolio",
+        "summary": "Logo para una marca."
+      },
+      "fidu": {
+        "title": "Fidu",
+        "category": "Logofolio",
+        "summary": "Logo de un proyecto académico."
+      },
+      "dissering": {
+        "title": "Dissering. Redes sociales",
         "category": "Redes sociales",
-        "summary": "Pieza para redes sociales."
+        "summary": "Piezas para redes sociales."
       },
-      "redes-2": {
-        "title": "Redes 02",
+      "u23-fest": {
+        "title": "U23 Fest. Redes sociales",
         "category": "Redes sociales",
-        "summary": "Pieza para redes sociales."
+        "summary": "Piezas para redes sociales."
       },
-      "redes-3": {
-        "title": "Redes 03",
+      "bax": {
+        "title": "Bex. Redes sociales",
         "category": "Redes sociales",
-        "summary": "Pieza para redes sociales."
+        "summary": "Piezas para redes sociales."
       }
     }
   },
@@ -185,7 +209,8 @@
     "lead": "¿Hablamos de un proyecto?",
     "copy": "Escríbeme. Te respondo con disponibilidad y una forma clara de trabajar.",
     "copyLabel": "Copiar correo",
-    "copied": "Copiado"
+    "copied": "Copiado",
+    "linkedin": "LinkedIn"
   },
   "footer": {
     "crafted": "Hecho en Colombia",

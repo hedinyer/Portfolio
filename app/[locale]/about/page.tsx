@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Experience } from '@/components/about/Experience'
+import { Reveal } from '@/components/motion/Reveal'
 import { portrait } from '@/content/projects'
 import { isLocale } from '@/i18n/routing'
 
@@ -38,9 +39,9 @@ export default async function AboutPage({ params }: PageProps) {
     const about = await getTranslations('about')
 
     return (
-        <main className="page-inset animate-[fade-in_0.5s_ease-out_both]">
+        <main className="page-inset">
             <div className="grid items-start gap-y-[calc(24*var(--u))] md:grid-cols-[calc(328*var(--u))_minmax(0,1fr)] md:gap-x-[calc(9*var(--u))] md:gap-y-0">
-                <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <Reveal eager className="relative aspect-[4/5] w-full overflow-hidden">
                     <Image
                         src={portrait.src}
                         alt={about('portraitAlt')}
@@ -51,12 +52,14 @@ export default async function AboutPage({ params }: PageProps) {
                         blurDataURL={portrait.blurDataURL}
                         className="object-cover"
                     />
-                </div>
+                </Reveal>
 
                 <div className="min-w-0 md:max-w-[calc(492*var(--u))]">
-                    <p className="t-body text-pretty">{about('description')}</p>
+                    <Reveal eager delay={40}>
+                        <p className="t-body text-pretty">{about('description')}</p>
+                    </Reveal>
 
-                    <div className="mt-[calc(28*var(--u))] flex flex-col gap-[calc(16*var(--u))]">
+                    <Reveal eager delay={80} className="mt-[calc(28*var(--u))] flex flex-col gap-[calc(16*var(--u))]">
                         <div>
                             <h1 className="t-label">{about('title')}</h1>
                             <p className="t-label">{about('role')}</p>
@@ -72,9 +75,11 @@ export default async function AboutPage({ params }: PageProps) {
                             </ul>
                             <p className="t-text mt-[calc(8*var(--u))] text-pretty">{about('toolsDescription')}</p>
                         </div>
-                    </div>
+                    </Reveal>
 
-                    <Experience />
+                    <Reveal>
+                        <Experience />
+                    </Reveal>
                 </div>
             </div>
         </main>

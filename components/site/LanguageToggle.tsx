@@ -20,7 +20,7 @@ export function LanguageToggle() {
                         lang={item}
                         aria-current={active ? 'true' : undefined}
                         onClick={() => router.replace(pathname, { locale: item as Locale })}
-                        className={`capitalize ${active ? 'text-link' : 'text-link-hover hover:text-link'}`}
+                        className={`nav-link capitalize ${active ? 'text-[var(--nav-active)]' : ''}`}
                     >
                         {item}
                     </button>

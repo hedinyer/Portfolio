@@ -43,6 +43,13 @@
   },
   "cases": {
     "categoryLabel": "Category",
+    "andrea-amarillo": {
+      "title": "Andrea Amarillo",
+      "category": "Visual identity",
+      "summary": "Andrea Amarillo is an author jewelry brand whose collections draw from Colombia and materials like fique, connecting with local traditions. As the brand grew, it needed a stronger image across physical and digital touchpoints, speaking to an audience drawn to nature, difference, and authenticity, with aesthetic sensitivity that strengthens each client’s personal image.",
+      "role": "Brand identity",
+      "alt": "Andrea Amarillo visual identity system"
+    },
     "nua": {
       "title": "NÚA",
       "category": "Visual identity",
@@ -57,12 +64,12 @@
       "role": "Brand identity",
       "alt": "SERES visual identity system"
     },
-    "geoparque": {
-      "title": "Chicamocha Canyon Geopark",
+    "cortteza": {
+      "title": "Cortteza",
       "category": "Visual identity",
-      "summary": "Developed for a UNESCO geopark application, the project captures the natural and community values of the Chicamocha Canyon in Santander, Colombia. It was a multidisciplinary effort in constant conversation with local culture.",
-      "role": "Identity and visual direction",
-      "alt": "Visual identity for the Chicamocha Canyon Geopark"
+      "summary": "Cortteza is a furniture and interiors brand with a warm, contemporary, tactile presence. The identity brings together logo, typography, color, patterns, and applications for stationery and web, with a calm aesthetic inspired by wood and light.",
+      "role": "Brand identity",
+      "alt": "Cortteza visual identity system"
     },
     "geoparque-web": {
       "title": "Geopark, website",
@@ -70,6 +77,13 @@
       "summary": "An end-to-end design and development project. The interface gathers everything about the Chicamocha Canyon Geopark for anyone who wants to learn about the place and explore it.",
       "role": "Interface design",
       "alt": "Website interface for the Chicamocha Canyon Geopark"
+    },
+    "magic-decisions": {
+      "title": "Magic Decisions",
+      "category": "UX UI",
+      "summary": "Magic Decisions is an app that interrupts impulsive buying at the critical moment. Through a magic sphere, emotional check-ins, and reflective questions, it helps users decide calmly, see the impact on financial goals, and recognize patterns between emotions and spending.",
+      "role": "UX/UI research and design",
+      "alt": "UX UI case study for the Magic Decisions app"
     },
     "babilio": {
       "title": "Babilio",
@@ -98,55 +112,65 @@
       "social": "Social"
     },
     "items": {
-      "fidu": {
-        "title": "Fidu",
+      "elevarte": {
+        "title": "ELEVARTE",
         "category": "Logofolio",
-        "summary": "Logo for an academic project."
+        "summary": "Logo for a brand."
       },
       "lumar": {
         "title": "Lumar Prestige",
         "category": "Logofolio",
         "summary": "Identity for a luxury brand."
       },
-      "snow": {
-        "title": "SNOW",
+      "luve": {
+        "title": "LUVÉ",
         "category": "Logofolio",
-        "summary": "Brand for a winter collection."
+        "summary": "Logo for a brand."
       },
-      "vierco": {
-        "title": "VIERCO",
+      "tiffany": {
+        "title": "TIFFANY",
         "category": "Logofolio",
-        "summary": "Corporate identity."
+        "summary": "Logo for a brand."
       },
-      "huevos": {
-        "title": "Huevos JVC",
+      "rubrica": {
+        "title": "Rúbrica.lat",
         "category": "Logofolio",
-        "summary": "Brand for an agricultural product."
+        "summary": "Logo for a brand."
       },
-      "ilustracion-1": {
-        "title": "Illustration 01",
-        "category": "Illustration",
-        "summary": "Personal digital illustration."
+      "bae": {
+        "title": "bae",
+        "category": "Logofolio",
+        "summary": "Logo for a brand."
       },
-      "ilustracion-2": {
-        "title": "Illustration 02",
-        "category": "Illustration",
-        "summary": "Personal digital illustration."
+      "mela": {
+        "title": "melao",
+        "category": "Logofolio",
+        "summary": "Logo for a brand."
       },
-      "redes-1": {
-        "title": "Social 01",
+      "sanfy": {
+        "title": "sanfy",
+        "category": "Logofolio",
+        "summary": "Logo for a brand."
+      },
+      "fidu": {
+        "title": "Fidu",
+        "category": "Logofolio",
+        "summary": "Logo for an academic project."
+      },
+      "dissering": {
+        "title": "Dissering. Social media",
         "category": "Social media",
-        "summary": "Social media piece."
+        "summary": "Social media pieces."
       },
-      "redes-2": {
-        "title": "Social 02",
+      "u23-fest": {
+        "title": "U23 Fest. Social media",
         "category": "Social media",
-        "summary": "Social media piece."
+        "summary": "Social media pieces."
       },
-      "redes-3": {
-        "title": "Social 03",
+      "bax": {
+        "title": "Bex. Social media",
         "category": "Social media",
-        "summary": "Social media piece."
+        "summary": "Social media pieces."
       }
     }
   },
@@ -185,7 +209,8 @@
     "lead": "Have a project in mind?",
     "copy": "Write to me. I’ll reply with availability and a clear way of working.",
     "copyLabel": "Copy email",
-    "copied": "Copied"
+    "copied": "Copied",
+    "linkedin": "LinkedIn"
   },
   "footer": {
     "crafted": "Made in Colombia",

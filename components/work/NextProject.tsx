@@ -1,3 +1,4 @@
+import { Reveal } from '@/components/motion/Reveal'
 import { Link } from '@/i18n/navigation'
 
 type CaseLink = { href: string; label: string }
@@ -8,7 +9,8 @@ export function NextProject({ previous, next }: { previous?: CaseLink | null; ne
     const label = [previous?.label, next?.label].filter(Boolean).join(' / ')
 
     return (
-        <nav
+        <Reveal
+            as="nav"
             aria-label={label}
             className="case-nav flex items-baseline px-[calc(8*var(--u))] md:pr-[calc(11*var(--u))] md:pl-[calc(13*var(--u))]"
         >
@@ -36,6 +38,6 @@ export function NextProject({ previous, next }: { previous?: CaseLink | null; ne
                     {next.label}
                 </Link>
             ) : null}
-        </nav>
+        </Reveal>
     )
 }

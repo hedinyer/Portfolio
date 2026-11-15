@@ -53,7 +53,11 @@ export default async function CasePage({ params }: { params: Promise<CaseParams>
             title={t(`${slug}.title`)}
             summary={t(`${slug}.summary`)}
             alt={t(`${slug}.alt`)}
-            gallery={project.gallery}
+            gallery={project.gallery.filter(
+                (media) =>
+                    !media.src.includes('home-cover') &&
+                    !media.src.includes('hover-'),
+            )}
             meta={meta}
             index={index + 1}
             total={cases.length}

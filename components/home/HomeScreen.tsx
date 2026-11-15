@@ -2,7 +2,9 @@
 
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import { Reveal } from '@/components/motion/Reveal'
 import { site } from '@/content/site'
+import { desktopCycle, phoneCycle } from './frames'
 import { HomeCarousel } from './HomeCarousel'
 
 const serviceKeys = ['ux', 'branding', 'logofolio', 'editorial', 'graphic'] as const
@@ -46,27 +48,33 @@ function Services() {
 export function HomeScreen() {
     return (
         <main className="text-foreground">
-            <div
-                aria-hidden
-                data-home-spacer
-                className="w-px max-md:h-[calc(100vh+2339*var(--u))] md:h-[calc(100vh+2734*var(--u))]"
-            />
+            <style>{`
+                [data-home-spacer]{height:calc(100vh + ${phoneCycle * 2} * var(--u))}
+                @media (min-width:768px){[data-home-spacer]{height:calc(100vh + ${desktopCycle * 2} * var(--u))}}
+            `}</style>
+            <div aria-hidden data-home-spacer className="w-px" />
 
             <div className="fixed z-20 w-[calc(305*var(--u))] max-md:top-[calc(51.22*var(--u))] max-md:left-[calc(7.91*var(--u))] md:bottom-[calc(0.43*var(--u))] md:left-[calc(11.97*var(--u))] md:w-[calc(492.3*var(--u))]">
                 <div data-home-copy className="md:hidden">
-                    <Bio />
-                    <div className="mt-[calc(14*var(--u))]">
+                    <Reveal eager>
+                        <Bio />
+                    </Reveal>
+                    <Reveal eager delay={60} className="mt-[calc(14*var(--u))]">
                         <Services />
-                    </div>
+                    </Reveal>
                 </div>
-                <div className="hidden md:block">
+                <Reveal eager className="hidden md:block">
                     <Bio />
-                </div>
+                </Reveal>
             </div>
 
-            <div className="fixed z-20 hidden w-[calc(114.94*var(--u))] md:right-[calc(243.08*var(--u))] md:bottom-[calc(31.98*var(--u))] md:block">
+            <Reveal
+                eager
+                delay={80}
+                className="fixed z-20 hidden w-[calc(114.94*var(--u))] md:right-[calc(243.08*var(--u))] md:bottom-[calc(31.98*var(--u))] md:block"
+            >
                 <Services />
-            </div>
+            </Reveal>
 
             <HomeCarousel />
         </main>

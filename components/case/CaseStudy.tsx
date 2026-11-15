@@ -2,8 +2,9 @@ import type { Media } from '@/content/projects'
 import { NextProject } from '@/components/work/NextProject'
 import { CaseGallery } from './CaseGallery'
 import { CaseMedia } from './CaseMedia'
+import { Reveal } from '@/components/motion/Reveal'
 import { FadeIn } from './FadeIn'
-import { heroRatio, planGallery } from './planGallery'
+import { naturalRatio } from './planGallery'
 
 export type CaseMeta = { label: string; value: string }
 export type CaseLink = { href: string; label: string }
@@ -58,15 +59,12 @@ export function CaseStudy({
     next: CaseLink | null
 }) {
     const hero = gallery[0]
+    const rest = gallery.slice(1)
     const { lead, aside } = splitSummary(summary)
-    const rows = planGallery(gallery.slice(1))
 
     return (
         <article className="relative flex w-full flex-col">
             <style>{`
-                .case-fade { opacity: 0; }
-                .case-fade.is-in { animation: case-text-in 0.8s ease-out forwards; }
-                @keyframes case-text-in { from { opacity: 0; } to { opacity: 1; } }
                 .case-title {
                     font-weight: 500;
                     letter-spacing: calc(-0.4 * var(--u));
@@ -80,39 +78,46 @@ export function CaseStudy({
                         line-height: calc(14 * var(--u));
                     }
                 }
-                @media (prefers-reduced-motion: reduce) {
-                    .case-fade { opacity: 1; animation: none; }
-                }
             `}</style>
 
             {hero ? (
-                <figure
-                    className="relative order-1 mx-[calc(8*var(--u))] mt-[calc(44*var(--u))] w-[calc(304*var(--u))] overflow-hidden md:order-2 md:mx-[calc(11*var(--u))] md:mt-0 md:w-[calc(1002*var(--u))]"
-                    style={{ aspectRatio: String(heroRatio(hero)) }}
+                <Reveal
+                    as="figure"
+                    eager
+                    className="relative order-1 ml-[calc(8*var(--u))] mt-[calc(44*var(--u))] w-[calc(100%-16*var(--u))] overflow-hidden md:order-2 md:ml-[calc(11*var(--u))] md:mt-0 md:w-[calc(100%-22*var(--u))]"
+                    style={{ aspectRatio: String(naturalRatio(hero)) }}
                 >
                     <CaseMedia media={hero} alt={alt} sizes="(max-width: 767px) 95vw, 98vw" priority />
-                </figure>
+                </Reveal>
             ) : null}
 
             <header className="relative order-2 px-[calc(8*var(--u))] pt-[calc(16*var(--u))] md:order-1 md:min-h-[calc(223*var(--u))] md:px-0 md:pt-[calc(55*var(--u))] md:pb-[calc(47*var(--u))]">
-                <h1 className="case-title t-title max-w-[calc(304*var(--u))] md:ml-[calc(12*var(--u))] md:max-w-[calc(640*var(--u))]">
+                <Reveal eager as="h1" className="case-title t-title max-w-[calc(304*var(--u))] md:ml-[calc(12*var(--u))] md:max-w-[calc(640*var(--u))]">
                     {title}
-                </h1>
+                </Reveal>
                 <FadeIn className="mt-[calc(8*var(--u))] w-full md:mt-[calc(3*var(--u))] md:ml-[calc(12*var(--u))] md:w-[calc(632*var(--u))] md:columns-2 md:gap-x-[calc(21*var(--u))] md:[column-fill:balance]">
                     <p className="t-text text-pretty">{lead}</p>
                 </FadeIn>
-                <MetaList
-                    rows={meta}
-                    className="absolute top-[calc(71.4*var(--u))] left-[calc(708*var(--u))] hidden w-[calc(277*var(--u))] grid-cols-[calc(133*var(--u))_calc(133*var(--u))] gap-x-[calc(11*var(--u))] gap-y-[calc(4*var(--u))] md:grid"
-                />
+                <Reveal
+                    eager
+                    delay={80}
+                    className="absolute top-[calc(71.4*var(--u))] left-[calc(708*var(--u))] hidden w-[calc(277*var(--u))] md:block"
+                >
+                    <MetaList
+                        rows={meta}
+                        className="grid grid-cols-[calc(133*var(--u))_calc(133*var(--u))] gap-x-[calc(11*var(--u))] gap-y-[calc(4*var(--u))]"
+                    />
+                </Reveal>
             </header>
 
-            <CaseGallery rows={rows} alt={alt} aside={aside} />
+            <CaseGallery items={rest} alt={alt} aside={aside} />
 
-            <MetaList
-                rows={meta}
-                className="order-4 mx-[calc(8*var(--u))] mt-[calc(28*var(--u))] grid grid-cols-2 gap-x-[calc(16*var(--u))] gap-y-[calc(8*var(--u))] md:hidden"
-            />
+            <Reveal className="order-4 mx-[calc(8*var(--u))] mt-[calc(28*var(--u))] md:hidden">
+                <MetaList
+                    rows={meta}
+                    className="grid grid-cols-2 gap-x-[calc(16*var(--u))] gap-y-[calc(8*var(--u))]"
+                />
+            </Reveal>
 
             <div className="order-5">
                 <NextProject previous={previous} next={next} />

@@ -27,7 +27,7 @@ export function CaseMedia({
                 controls={false}
                 preload="metadata"
                 aria-label={alt}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain"
             />
         )
     }
@@ -42,7 +42,7 @@ export function CaseMedia({
             placeholder="blur"
             blurDataURL={media.blurDataURL}
             draggable={false}
-            className="object-cover"
+            className="object-contain"
         />
     )
 }

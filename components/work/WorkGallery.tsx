@@ -1,7 +1,10 @@
+'use client'
+
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import type { CSSProperties } from 'react'
 import type { Media, ProjectCategory } from '@/content/projects'
+import { Reveal } from '@/components/motion/Reveal'
 import { Link } from '@/i18n/navigation'
 
 const COLUMN_COUNT = 3
@@ -22,6 +25,9 @@ export type WorkTile = {
     alt: string
     cover: Media
     hover: Media | null
+    coverPosition?: string
+    hoverPosition?: string
+    frameRatio?: number
 }
 
 type PlacedTile = WorkTile & {
@@ -34,6 +40,8 @@ function frameRatio(cover: Media, index: number) {
     if (raw >= MIN_RATIO && raw <= MAX_RATIO) return raw
     return PORTRAIT_BAND[index % PORTRAIT_BAND.length]
 }
+
+const SECTION_ORDER: ProjectCategory[] = ['ux', 'identity', 'illustration']
 
 function groupByCategory(items: WorkTile[]) {
     const groups: { key: ProjectCategory; items: PlacedTile[] }[] = []
@@ -50,7 +58,11 @@ function groupByCategory(items: WorkTile[]) {
         current.items.push(placed)
     })
 
-    return groups
+    return groups.sort(
+        (a, b) =>
+            (SECTION_ORDER.indexOf(a.key) === -1 ? 99 : SECTION_ORDER.indexOf(a.key)) -
+            (SECTION_ORDER.indexOf(b.key) === -1 ? 99 : SECTION_ORDER.indexOf(b.key)),
+    )
 }
 
 function columnsOf(items: PlacedTile[]) {
@@ -71,48 +83,52 @@ function sectionLabel(
 }
 
 function WorkCard({ item, priority }: { item: PlacedTile; priority: boolean }) {
-    const ratio = frameRatio(item.cover, item.index)
+    const ratio = item.frameRatio ?? frameRatio(item.cover, item.index)
 
     return (
-        <Link
-            href={`/work/${item.slug}`}
-            data-cursor="view"
-            style={{ '--i': item.position } as CSSProperties}
-            className="group block w-full min-w-0 cursor-pointer max-md:[order:var(--i)]"
-        >
-            <div
-                className="relative w-full overflow-hidden"
-                style={{ aspectRatio: ratio, viewTransitionName: `work-${item.slug}` }}
+        <Reveal delay={Math.min(item.index * 35, 140)} eager={item.index < 2} className="min-w-0">
+            <Link
+                href={`/work/${item.slug}`}
+                data-cursor="view"
+                style={{ '--i': item.position } as CSSProperties}
+                className="group block w-full min-w-0 cursor-pointer max-md:[order:var(--i)]"
             >
-                <Image
-                    src={item.cover.src}
-                    alt={item.alt}
-                    fill
-                    sizes="(max-width: 767px) calc(100vw * 304 / 320), calc(328 * min(100vw, 3600px) / 1024)"
-                    priority={priority}
-                    placeholder="blur"
-                    blurDataURL={item.cover.blurDataURL}
-                    draggable={false}
-                    className="object-cover"
-                />
-                {item.hover ? (
+                <div
+                    className="relative w-full overflow-hidden"
+                    style={{ aspectRatio: ratio, viewTransitionName: `work-${item.slug}` }}
+                >
                     <Image
-                        src={item.hover.src}
-                        alt=""
+                        src={item.cover.src}
+                        alt={item.alt}
                         fill
                         sizes="(max-width: 767px) calc(100vw * 304 / 320), calc(328 * min(100vw, 3600px) / 1024)"
+                        priority={priority}
                         placeholder="blur"
-                        blurDataURL={item.hover.blurDataURL}
+                        blurDataURL={item.cover.blurDataURL}
                         draggable={false}
-                        aria-hidden
-                        className="object-cover opacity-0 transition-opacity duration-200 ease-[ease-in-out] max-md:hidden md:group-hover:opacity-100"
+                        className="object-cover object-center"
+                        style={item.coverPosition ? { objectPosition: item.coverPosition } : undefined}
                     />
-                ) : null}
-            </div>
-            <p className="t-caption mt-[calc(4*var(--u))]">
-                {item.title}. {item.category}.
-            </p>
-        </Link>
+                    {item.hover ? (
+                        <Image
+                            src={item.hover.src}
+                            alt=""
+                            fill
+                            sizes="(max-width: 767px) calc(100vw * 304 / 320), calc(328 * min(100vw, 3600px) / 1024)"
+                            placeholder="blur"
+                            blurDataURL={item.hover.blurDataURL}
+                            draggable={false}
+                            aria-hidden
+                            className="object-cover opacity-0 transition-opacity duration-200 ease-[ease-in-out] max-md:hidden md:group-hover:opacity-100"
+                            style={{ objectPosition: item.hoverPosition ?? 'center' }}
+                        />
+                    ) : null}
+                </div>
+                <p className="t-caption mt-[calc(4*var(--u))]">
+                    {item.title}. {item.category}.
+                </p>
+            </Link>
+        </Reveal>
     )
 }
 
@@ -129,9 +145,9 @@ export function WorkGallery({ items }: { items: WorkTile[] }) {
                     aria-labelledby={`work-group-${group.key}`}
                     className={groupIndex === 0 ? undefined : 'mt-[calc(48*var(--u))]'}
                 >
-                    <h2 id={`work-group-${group.key}`} className="t-label mb-[calc(8*var(--u))]">
+                    <Reveal as="h2" delay={groupIndex * 40} eager={groupIndex === 0} id={`work-group-${group.key}`} className="t-label mb-[calc(8*var(--u))]">
                         {sectionLabel(t, group.key, group.items[0]?.category ?? group.key)}
-                    </h2>
+                    </Reveal>
                     <div className="flex flex-col gap-[calc(40*var(--u))] md:flex-row md:items-start md:gap-[calc(9*var(--u))]">
                         {columnsOf(group.items).map((column, columnIndex) => (
                             <div

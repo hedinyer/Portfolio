@@ -27,8 +27,11 @@ export type HomeSlide = {
 
 const media = mediaJson as {
     portrait: Media
+    home?: Media[]
     projects: Record<string, Media[]>
 }
+
+export const homeImages: Media[] = media.home ?? []
 
 function project(
     slug: string,
@@ -55,25 +58,29 @@ function project(
 export const portrait = media.portrait
 
 export const cases: Project[] = [
-    project('nua', 'case', 'identity'),
-    project('seres', 'case', 'identity', { collaborators: ['Julián Uscategui'] }),
-    project('geoparque', 'case', 'identity', { collaborators: ['Astrid Aillón', 'Ana Niño'] }),
     project('geoparque-web', 'case', 'ux', { collaborators: ['Astrid Aillón', 'Ana Niño'] }),
+    project('magic-decisions', 'case', 'ux'),
+    project('nua', 'case', 'identity'),
+    project('andrea-amarillo', 'case', 'identity'),
+    project('cortteza', 'case', 'identity'),
+    project('seres', 'case', 'identity', { collaborators: ['Julián Uscategui'] }),
     project('babilio', 'case', 'illustration'),
     project('calendario', 'case', 'illustration'),
 ]
 
 export const archive: Project[] = [
-    project('fidu', 'archive', 'logo'),
+    project('elevarte', 'archive', 'logo'),
     project('lumar', 'archive', 'logo'),
-    project('snow', 'archive', 'logo'),
-    project('vierco', 'archive', 'logo'),
-    project('huevos', 'archive', 'logo'),
-    project('ilustracion-1', 'archive', 'illustration'),
-    project('ilustracion-2', 'archive', 'illustration'),
-    project('redes-1', 'archive', 'social'),
-    project('redes-2', 'archive', 'social'),
-    project('redes-3', 'archive', 'social'),
+    project('luve', 'archive', 'logo'),
+    project('tiffany', 'archive', 'logo'),
+    project('rubrica', 'archive', 'logo'),
+    project('bae', 'archive', 'logo'),
+    project('mela', 'archive', 'logo'),
+    project('sanfy', 'archive', 'logo'),
+    project('fidu', 'archive', 'logo'),
+    project('dissering', 'archive', 'social'),
+    project('u23-fest', 'archive', 'social'),
+    project('bax', 'archive', 'social'),
 ]
 
 export const projects: Project[] = [...cases, ...archive]
@@ -98,18 +105,18 @@ function slide(slug: string, index: number): HomeSlide {
 export const homeSlides: HomeSlide[] = [
     slide('nua', 0),
     slide('seres', 0),
-    slide('geoparque', 0),
+    slide('cortteza', 0),
     slide('geoparque-web', 0),
     slide('babilio', 0),
     slide('calendario', 0),
     slide('nua', 4),
     slide('seres', 2),
-    slide('geoparque', 2),
+    slide('cortteza', 2),
     slide('seres', 5),
     slide('nua', 8),
     slide('babilio', 1),
     slide('calendario', 1),
-    slide('geoparque', 4),
+    slide('cortteza', 4),
     slide('seres', 8),
     slide('nua', 12),
 ]
